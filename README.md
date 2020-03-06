@@ -1,2 +1,2 @@
-# smartgym
+# SmartGym
 SI3PS
