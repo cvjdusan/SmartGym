@@ -1,0 +1,52 @@
+html, body {
+    height: 95%;
+}
+
+.fill { 
+    min-height: 100%;
+    height: 100%;
+}
+
+
+.container-fluid{
+    margin-top: 70px;
+    background-color: #efefef;
+}
+
+.nav-item {
+    font-size: 22px;;
+}
+
+#header {
+    background-color: #008000;
+    background-image: url("../images/Gym\ Background\ Final\ \ \ E\ Town\ Fit.jpg");
+    font-size: 36px;
+    height: 400px;
+    color: white;
+}
+
+
+#headerText {
+    margin-top: 350px;
+
+
+}
+
+#content {
+    margin-top: 20px;
+    
+
+}
+
+#registrationDiv {
+    margin-top: 20px;
+
+}
+
+#registrationTable {
+    margin-top: 50px;
+}
+
+#registrationTable td {
+    padding: 20px 50px 0px 20px;
+}
