@@ -16,36 +16,39 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto">
-                <a class="nav-item nav-link" href="index.html">Početna <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="registration.html">Postani član</a>
-                <a class="nav-item nav-link active" href="login.html" id="aNavRight">Uloguj se</a>
+                <a class="nav-item nav-link" href="userPremium.html"></a>Početna <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="reservationPremium.html">Rezervacija</a>
+                <a class="nav-item nav-link active" href="termPremium.html">Pregled termina</a>
+                <a class="nav-item nav-link" href="statPremium.html">Statistika</a>
+                <a class="nav-item nav-link" href="index.html" id="aNavRight">Odjavi se</a>
             </div>
         </div>
     </nav>
 
     <div class="container-fluid fill">
         <div class="row">
-            <div class="col-sm-12 offset-md-3 col-md-6 offset-md-3" id="content">
-                <table id="inputTable">
+            <div class="col-sm-12 offset-md-2 col-md-7 offset-md-3" id="content">
+                <table class="table table-dark table-striped" id="termTable">
+                    <thead>
+                        <tr>
+                            <td>Datum</td>
+                            <td>Vreme</td>
+                            <td>Naziv sprave</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </thead>
                     <tr>
-                        <td><h4 style="margin-bottom: 20px; margin-top: 20px;">Unesite svoje podatke: </h4></td>
+                        <td>30.11.2020</td>
+                        <td>11.11</td>
+                        <td>Benc press</td>
+                        <td><input type="button" value="Otkaži termin"></td>
                     </tr>
                     <tr>
-                        <td>Username:</td>
-                        <td><input type="text"></td>
+                        <td>30.11.2020</td>
+                        <td>11.11</td>
+                        <td>Benc press</td>
+                        <td><input type="button" value="Otkaži termin"></td>
                     </tr>
-                    <tr>
-                        <td>Lozinka:</td>
-                        <td><input type="password"></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><a href="#">Promenite šifru</a></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><a href="user.html"><input type="button" value="Login"></a></td>
-                    <tr>
                 </table>
             </div>
         </div>
