@@ -1,45 +1,24 @@
-<div class="container-fluid fill">
-    
-    
-    
-    <form class="needs-validation" novalidate>
-        
-        <div class="form">
-          <div class="col-md-4 mb-3">
-            <input type="text" placeholder="Korisničko ime" required>
-            <div class="invalid-feedback">
-               Polje ne sme ostati prazno.
-            </div>
+    <div class="container-fluid fill">
+        <form class="form offset-md-4" name="passForm" action="<?= site_url("/Guest/newPassword") ?>" method="post">
+          <div class="col-sm-6 mb-3">
+              <input type="text" class="form-control" name="KorisnickoIme" placeholder="Korisničko ime" required>
           </div>
-          <div class="col-md-4 mb-3">
-            <input type="password" placeholder="Šifra" required>
-            <div class="invalid-feedback">
-               Polje ne sme ostati prazno.
-            </div>
+          <div class="col-sm-6 mb-3">
+              <input type="text" class="form-control" name="Sifra"  placeholder="Šifra" required>
+
           </div>
-        </div>
-
-    <button class="btn btn-success" type="submit">Potvrdi</button>
-  </form>
-</div>
-
-<script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
-    var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false);
-    });
-  }, false);
-})();
-</script>
+          <div class="col-sm-6 mb-3">
+              <input type="text" class="form-control" name="NovaSifra"  placeholder="Nova šifra" required>
+               <small id="passHelp" class="form-text text-muted">Šifra mora biti najmanje dužine 6 karaktera i mora sadržati makar 1 cifru. </small>
+          </div>
+          <div class="col-sm-6 mb-3">
+              <input type="text" class="form-control" name="Potvrda"  placeholder="Potvrda" required>
+              <div class="col-sm-12 errorForm">
+                 <?php if(isset($errorMsg)) 
+                    echo "<font color='red'>$errorMsg</font><br>"; 
+                ?>
+              </div>
+          </div>
+          <button style="margin-left: 40%"class="btn btn-success" type="submit">Promeni</button>
+        </form>
+    </div>

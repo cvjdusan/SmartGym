@@ -50,10 +50,10 @@
             <div class="offset-1 col-sm-12 col-md-5">
                 <h1 style="margin-top: 20px;">Postanite PREMIUM korisnik i pratite Vaš napredak!</h1>
                 <h1 style="margin-top: 20px; color: white;">Sta čekate? Registrujte se i vežbajte pametno</h1>
-                <a href="registration.html"><button type="button" class="btn btn-outline-light" style="margin-top: 20px; margin-bottom: 30px;">Postani član</button></a>
+                <a href="<?php echo base_url()?>/Guest/register"><button type="button" class="btn btn-outline-light" style="margin-top: 20px; margin-bottom: 35px;">Postani član</button></a>
             </div>
-            <div class="offset-1 col-sm-4 col-md-4">
-              <img src="<?php echo base_url()?>/../images/nesto.png" width="50%"  style="margin-top: 50px;">
+            <div class="offset-1 col-sm-4 col-md-4" style="margin-bottom: 20px;">
+              <img src="<?php echo base_url()?>/../images/nesto.png" width="50%"  style="margin-top: 50px; padding: 10px;">
             </div>
           </div>
 </div>

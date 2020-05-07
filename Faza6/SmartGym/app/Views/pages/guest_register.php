@@ -18,12 +18,13 @@ if(isset($_POST['regBtn'])) {
         <form class="form offset-md-4" name="registerForm" action="<?= site_url("/Guest/addUser") ?>" method="post">
           <div class="col-sm-6 mb-3">
               <input type="text" class="form-control" value="<?php echo $KorisnickoIme;?>" name="KorisnickoIme" placeholder="Korisničko ime" required>
-               <div class="col-sm-12 errorForm" >
+              <div class="col-sm-12 errorForm" >
 
               </div>
           </div>
           <div class="col-sm-6 mb-3">
               <input type="password" class="form-control" name="Sifra"  placeholder="Šifra" required>
+              <small id="passHelp" class="form-text text-muted">Šifra mora biti najmanje dužine 6 karaktera i mora sadržati makar 1 cifru. </small>
               <div class="col-sm-12 errorForm" >
 
               </div>
@@ -65,62 +66,6 @@ if(isset($_POST['regBtn'])) {
                   <?php echo $errorMsg; ?>
               </div>
           </div>
-          <button name="regBtn" style="margin-bottom: 40px; margin-left: 40%" class="btn btn-success" type="submit">Register</button>
+          <button name="regBtn" style="margin-bottom: 40px; margin-left: 40%" class="btn btn-success" type="submit">Registruj se</button>
         </form>
     </div>
-
-
-
-
-      <!--  <div class="row">
-            <div class="col-sm-12 offset-md-3 col-md-6">
-                <table id="inputTable">
-                    <tr>
-                        <td> <h4>Popunite sva polja: </h4></td>
-                    </tr>
-                    <tr>
-                        <td>Korisničko ime</td>
-                        <td><input type="text" style="width: 100%;"></td>
-                    </tr>
-                    <tr>
-                        <td>Ime:</td>
-                        <td><input type="text"></td>
-                    </tr>
-                    <tr>
-                        <td>Prezime:</td>
-                        <td><input type="text"></td>
-                    </tr>
-                    <tr>
-                        <td>Lozinka:</td>
-                        <td><input type="password"></td>
-                    </tr>
-                    <tr>
-                        <td>Potvrdita lozinke:</td>
-                        <td><input type="password"></td>
-                    </tr>
-                    <tr>
-                        <td>E-mail</td>
-                        <td><input type="text"></td>
-                    </tr>
-                    <tr>
-                        <td>Datum rodjenja</td>
-                        <td><input type="date"></td>
-                    </tr>
-                    <tr>
-                        <td>Tip korisnika:</td>
-                        <td>
-                            <select>
-                                <option>Običan korisnik</option>
-                                <option>Premium korisnik</option>
-                                <option>Moderator</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><input type="button" value="Registruj se"></td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-      -->

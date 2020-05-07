@@ -33,20 +33,13 @@ class Guest extends BaseController{
         
         $user = $userModel->find($KorisnickoIme);
         
-        if (strlen($Sifra) < 6) {
-            return $this->register("Šifra mora biti duža od 6 karaktera!");
-        }
-
-        if (!preg_match("#[0-9]+#", $Sifra)) {
-            return $this->register("Šifra mora sadržati bar 1 cifru!");
-        }
-
-        if (!preg_match("#[a-zA-Z]+#", $Sifra)) {
-            return $this->register("Šifra mora sadržati bar 1 slovo!");
-        }  
-        
         if($user != null)
             return $this->register("Korisnik već postoji!");
+        
+        if (strlen($Sifra) < 6 || !preg_match("#[0-9]+#", $Sifra) 
+                || !preg_match("#[a-zA-Z]+#", $Sifra)) {
+            return $this->changePassword("Nova šifra nije validna.");
+        }
         
         if($Sifra != $Potvrda)
             return $this->register("Šifre se moraju poklapati!");
@@ -69,7 +62,7 @@ class Guest extends BaseController{
                 
         $userModel->insert($data);
 
-        $this->register("Uspešno ste poslali zahtev");
+        $this->register("Uspešno ste poslali zahtev za registraciju.");
     }
     
     public function login($errorMsg=null){
@@ -136,8 +129,39 @@ class Guest extends BaseController{
     }
     
     
-    public function changePassword(){
-        $this->show('change_password', []);
+    public function changePassword($errorMsg = null){
+        $this->show('change_password', ['errorMsg'=>$errorMsg]);
+    }
+    
+    public function newPassword(){
+        $userModel=new UserModel(); 
+        $KorisnickoIme=$this->request->getVar('KorisnickoIme');
+        $Sifra=$this->request->getVar('Sifra');
+        $NovaSifra = $this->request->getVar('NovaSifra');
+        $Potvrda=$this->request->getVar('Potvrda');
+        
+        $user = $userModel->find($KorisnickoIme);
+        
+        if($user==null){
+           return $this->changePassword("Korisnik ne postoji");
+        }
+          
+        if($user->Sifra!=$Sifra){
+           return $this->changePassword("Pogrešna šifra");
+        }
+        
+        if (strlen($NovaSifra) < 6 || !preg_match("#[0-9]+#", $NovaSifra) 
+                || !preg_match("#[a-zA-Z]+#", $NovaSifra)) {
+            return $this->changePassword("Nova šifra nije validna.");
+        }
+        
+        if($NovaSifra != $Potvrda){
+              return $this->changePassword("Šifre se moraju poklapati");
+        }
+        
+        $userModel->update($KorisnickoIme, ['Sifra'=>$NovaSifra]);
+        
+        return $this->changePassword("Uspesna promena!");
     }
     
 }
