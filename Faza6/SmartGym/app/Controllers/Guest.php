@@ -2,13 +2,12 @@
 
 use App\Models\UserModel;
 
-
 class Guest extends BaseController{
     
     protected function show($page, $data) {
         $data['controller']='Guest';
         $data['page']=$page;
-        
+      //  echo site_url();
         echo view('templates/guest_header', $data);
         echo view ("pages/$page", $data);
         echo view('templates/footer');
@@ -90,18 +89,7 @@ class Guest extends BaseController{
     }
     
     public function loginSubmit(){     
-       
-       // ovo se ne koristi, ali stoji tu jer kad se vrati posle
-       // logovanja, bez ovoga pukne, to vrv mora da se sredi 
-       // u filterima pa moze da se izbrise ovo
-        
-       if(!$this->validate(['KorisnickoIme'=>'required'])){
-            return $this->login("Korisničko ime ne sme biti prazno");
-       }   
-       else if(!$this->validate(['Sifra'=>'required'])){
-            return $this->login("Šifra ne sme biti prazna");
-       }
-       
+              
        $userModel=new UserModel();
        $user=$userModel->find($this->request->getVar('KorisnickoIme'));
         
@@ -111,8 +99,10 @@ class Guest extends BaseController{
         if($user->Sifra!=$this->request->getVar('Sifra'))
            return $this->login("Pogrešna šifra");
         
-        if($user->Status == 'P'){          
+        if($user->Status == 'P'){  
+            
             $this->session->set('user', $user); 
+            
             $type = 'User';
 
             if($user->Tip == 'P')
@@ -122,6 +112,7 @@ class Guest extends BaseController{
             else if($user->Tip == 'A')
                     $type = 'Admin';
 
+            $this->session->set('type', $type);
 
             return redirect()->to(site_url($type));
         } else

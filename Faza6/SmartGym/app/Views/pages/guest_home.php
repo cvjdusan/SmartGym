@@ -1,7 +1,7 @@
 <div class="container-fluid">
     
         <div class="row" id="header">
-            <div class="col-xs-6 col-sm-12 text-center" style="background-image:url(<?php echo base_url()?>/../images/gymBackground.jpg) ">
+            <div class="col-xs-6 col-sm-12 text-center" style="background-image:url(/images/gymBackground.jpg) ">
                 &nbsp;
             </div>
         </div>
@@ -25,13 +25,13 @@
                 </ol>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                      <img class="d-block w-100" src="<?php echo base_url()?>/../images/gym1.jpg">
+                      <img class="d-block w-100" src="/images/gym1.jpg">
                   </div>
                   <div class="carousel-item">
-                      <img class="d-block w-100" src="<?php echo base_url()?>/../images/gym2.jpg">
+                      <img class="d-block w-100" src="/images/gym2.jpg">
                   </div>
                   <div class="carousel-item">"
-                      <img class="d-block w-100" src="<?php echo base_url()?>/../images/gym3.jpg">
+                      <img class="d-block w-100" src="/images/gym3.jpg">
                   </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -53,7 +53,7 @@
                 <a href="<?php echo base_url()?>/Guest/register"><button type="button" class="btn btn-outline-light" style="margin-top: 20px; margin-bottom: 35px;">Postani član</button></a>
             </div>
             <div class="offset-1 col-sm-4 col-md-4" style="margin-bottom: 20px;">
-              <img src="<?php echo base_url()?>/../images/nesto.png" width="50%"  style="margin-top: 50px; padding: 10px;">
+                <img src="/images/pie.png" width="50%"  style="margin-top: 50px; padding: 10px;">
             </div>
           </div>
 </div>

@@ -21,8 +21,8 @@ class App extends BaseConfig
 	| environments.
 	|
 	*/
-	public $baseURL = 'http://localhost/SmartGym/public';
-
+	//public $baseURL = 'http://localhost/SmartGym/public/'; //<----- ovo izgleda ne valja
+         public $baseURL = 'http://localhost:8080/';
 	/*
 	|--------------------------------------------------------------------------
 	| Index File
