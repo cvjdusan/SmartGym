@@ -41,7 +41,7 @@ if($session->has('Datum')) {
                     <?php 
                         $string2 = "";
                         
-                        for($i = 0; $i <= 60; $i+=10){
+                        for($i = 0; $i <= 50; $i+=10){
                             $id = $i < 10 ? "0".$i : $i;
                             if($Min != null && $Min == $id){
                                 $string2 .= "<option selected='selected' name='hour' value='" . $id . "'>" .  $id . "</option>"; 

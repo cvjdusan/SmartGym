@@ -60,7 +60,7 @@ class User extends BaseController{
             $reservedByMe = $resModel->findIds($termsMe);
         }
         
-        if(count($reservedByMe) == 2){
+        if(count($reservedByMe) >= 2){
             return $this->reservation("Ne mozete rezervisati vise od dve sprave u datom terminu.");
         }      
         
@@ -94,17 +94,22 @@ class User extends BaseController{
        $termModel = new TermModel();
        
        $user = $this->session->get('user');
-
        
-       $data = [
-            'KorisnickoIme'=>$user->KorisnickoIme,
-            'Datum'=> $Datum,
-            'Vreme'=> $Vreme,
-            'Status'=>'R'
-        ];
-                
-       $termModel->insert($data);
-        $IdTer = $termModel->getInsertID();
+       $term = $termModel->where(['Datum' => $Datum, 'Vreme' => $Vreme, 'KorisnickoIme' => $user->KorisnickoIme])->first();
+       
+       if($term == null){     
+            $data = [
+                 'KorisnickoIme'=>$user->KorisnickoIme,
+                 'Datum'=> $Datum,
+                 'Vreme'=> $Vreme,
+                 'Status'=>'R'
+             ];
+
+           $termModel->insert($data);
+           $IdTer = $termModel->getInsertID(); 
+       } else {
+           $IdTer = $term->IdTer;  
+       }
        
        $data2 = [
             'IdTer' => $IdTer,
