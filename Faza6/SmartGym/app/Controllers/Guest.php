@@ -21,7 +21,11 @@ class Guest extends BaseController{
         $this->show('guest_register', ['errorMsg'=>$errorMsg]);
     }
     
-    public function addUser(){        
+    public function addUser(){      
+        if(!is_array($_POST) || count($_POST)==0){
+           return redirect()->to('register');
+       }
+        
         $userModel=new UserModel();  
         $KorisnickoIme=$this->request->getVar('KorisnickoIme');
         $Sifra=$this->request->getVar('Sifra');
@@ -88,7 +92,12 @@ class Guest extends BaseController{
           
     }
     
-    public function loginSubmit(){     
+    public function loginSubmit(){  
+  
+
+       if(!is_array($_POST) || count($_POST)==0){
+           return redirect()->to('login');
+       }
               
        $userModel=new UserModel();
        $user=$userModel->find($this->request->getVar('KorisnickoIme'));
@@ -125,6 +134,11 @@ class Guest extends BaseController{
     }
     
     public function newPassword(){
+        if(!is_array($_POST) || count($_POST)==0){
+           return redirect()->to('changePassword');
+       }
+        
+        
         $userModel=new UserModel(); 
         $KorisnickoIme=$this->request->getVar('KorisnickoIme');
         $Sifra=$this->request->getVar('Sifra');
