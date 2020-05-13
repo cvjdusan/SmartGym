@@ -2,7 +2,7 @@
 
 use CodeIgniter\Model;
 
-class MuscleGroupMode extends Model{
+class MuscleGroupModel extends Model{
   protected $table      = 'grupa_misica';
   protected $primaryKey = 'IdGru';
   protected $returnType = 'object';

@@ -2,7 +2,7 @@
 
 use App\Models\ExerciseEquipmentTypeModel;
 use App\Models\ExerciseEquipmentModel;
-use App\Models\MuscleGroupMode;
+use App\Models\MuscleGroupModel;
 use App\Models\ReservationModel;
 use App\Models\TermModel;
 use App\Models\TargetedMuscleGroupModel;
@@ -48,7 +48,7 @@ class User extends BaseController{
         $resModel = new ReservationModel();
         $termModel = new TermModel();
         $targetModel = new TargetedMuscleGroupModel();
-        $muscleModel = new MuscleGroupMode();
+        $muscleModel = new MuscleGroupModel();
         
         $terms = $termModel->getTerms($Date, $Time);
         $termsMe = $termModel->getTermsMe($Date, $Time, $this->session->get('user'));

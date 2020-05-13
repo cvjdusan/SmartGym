@@ -33,6 +33,8 @@ class TargetedMuscleGroupModel extends Model{
         return $musc;
   }
   
-
+  public function findForType($id) {
+           return $this->where('IdTip', $id)->findAll();
+       }
   
 }
