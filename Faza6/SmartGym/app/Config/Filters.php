@@ -38,6 +38,6 @@ class Filters extends BaseConfig
 	public $filters = [
             'user' => ['before' => ['User/*', 'User']],
             'guest' => ['before' => ['Guest/*', 'Guest', '/']],          
-            //'moderator' => ['before' => ['Moderator/*', 'Moderator']],
+            'moderator' => ['before' => ['Moderator/*', 'Moderator']],
         ];
 }
