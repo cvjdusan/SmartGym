@@ -1,3 +1,7 @@
+<div class="container-fluid fill">
+    <div class="row" id="content">
+        <div class="offset-1 col-sm-12 col-md-10">
+
 <?php
 
 use App\Models\TargetedMuscleGroupModel;
@@ -18,4 +22,11 @@ echo "<br><br>";
 echo $eq->Opis;
 echo "<br><br>";
 
-//Slika ....
+echo '<img width="200px;" height="200px;" src="data:image/png;base64,'.base64_encode($eq->Slika).'"/>';
+
+?>
+
+            
+                    </div>
+    </div>
+</div>

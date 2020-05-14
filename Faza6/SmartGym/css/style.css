@@ -65,6 +65,24 @@ html, body {
     margin-bottom: 50px;
 }
 
+.modLink {
+    font-size: 32px;
+    color: green;
+    text-decoration: none;
+}
+
+.modLink:hover {
+    color: greenyellow;
+    text-decoration: none;
+}
+
+.modImg {
+    width: 180px;
+    height: 180px;
+    background-color: white;
+    border-radius: 50%;
+    margin-left: 20px;
+}
 
 
 #inputTable {
@@ -79,6 +97,7 @@ html, body {
     margin-top: 50px;
 }
 
+
 .pie {
     margin-top: 20px;
     width: 200px; 
@@ -88,5 +107,63 @@ html, body {
     background-image: linear-gradient(to right, transparent 50%, #655 0);
   }
 
+/* Dropdown Button */
+.dropbtn {
+  background-color: black;
+  border: none;
+}
 
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  
+}
 
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: orangered;} 
+
+.list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
+    
+.list-inline {
+    padding-left: 0;
+    margin-left: -5px;
+    list-style: none;
+}
+    
+.list-inline > li {
+    display: inline-block;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+    
+.text-center {
+    text-align: center;
+}

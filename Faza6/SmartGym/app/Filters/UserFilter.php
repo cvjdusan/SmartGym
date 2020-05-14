@@ -8,9 +8,10 @@ class UserFilter implements FilterInterface
 {
     public function before(RequestInterface $request)
     {
-       $session=session();
-        if(!$session->has('user'))
-            return redirect()->to(site_url('Guest'));
+       $session=session();       
+       if(!$session->has('user'))
+           return redirect()->to(site_url('Guest'));
+       
     }
 
     //--------------------------------------------------------------------

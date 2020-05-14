@@ -9,7 +9,7 @@ use App\Models\TargetedMuscleGroupModel;
 
 class User extends BaseController{
     
-    protected function show($page, $data) {
+    protected function show($page, $data) {        
         $data['controller']='User';
         $data['page']=$page;
         
@@ -19,10 +19,16 @@ class User extends BaseController{
     }
     
     public function index(){
+ //       if($this->session->get('type') != 'User')
+   //         return redirect()->to('Moderator');
+        
         $this->show("user_home", []);
     }
     
     public function reservation($errorMsg=null, $eq=null, $reserved=null){
+     //  if($this->session->get('type') != 'User')
+       //    return redirect()->to(site_url('Moderator'));
+                
         $this->show('user_reservation', ['errorMsg'=>$errorMsg, 'eq'=>$eq, 'reserved'=>$reserved]);
     }
     
@@ -42,6 +48,10 @@ class User extends BaseController{
         
         $this->session->set('Hour', $Hour);
         $this->session->set('Min', $Min);
+        
+        if(date("Y-m-d", time()) >= $Date){
+            return $this->reservation("Morate najmanje 1 dan pre da rezervišete."); 
+        }
         
         $typeModel = new ExerciseEquipmentTypeModel();
         $eqModel = new ExerciseEquipmentModel();

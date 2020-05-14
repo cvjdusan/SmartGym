@@ -14,5 +14,10 @@ namespace App\Controllers;
  * @author Dusan
  */
 class Admin extends Moderator{
-    //put your code here
+    
+    protected function show($page, $data) {
+        $data['controller']='Admin';
+        $data['page']=$page;
+        echo view ("pages/$page", $data);
+    } 
 }

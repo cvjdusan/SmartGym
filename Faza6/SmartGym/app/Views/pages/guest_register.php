@@ -63,7 +63,10 @@ if(isset($_POST['regBtn'])) {
           </div>
           <div class="col-sm-6 mb-3">
               <div class="col-sm-12">
-                  <?php echo $errorMsg; ?>
+                  
+                  <?php 
+                        echo "<font style='color:red'>".$errorMsg."</font>";
+                    ?>
               </div>
           </div>
           <button name="regBtn" style="margin-bottom: 40px; margin-left: 40%" class="btn btn-success" type="submit">Registruj se</button>

@@ -9,15 +9,15 @@ class ModeratorFilter implements FilterInterface
     public function before(RequestInterface $request)
     {
        $session=session();
-        if(!$session->has('Moderator')) {
+       if(!$session->has('user')) {
             return redirect()->to(site_url('Guest'));
-        }
+       }
     }
 
     //--------------------------------------------------------------------
 
     public function after(RequestInterface $request, ResponseInterface $response)
     {
-        // Do something here
+
     }
 }

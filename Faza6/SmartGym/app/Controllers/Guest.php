@@ -1,6 +1,7 @@
 <?php namespace App\Controllers;
 
 use App\Models\UserModel;
+use DateTime;
 
 class Guest extends BaseController{
     
@@ -41,7 +42,7 @@ class Guest extends BaseController{
         
         if (strlen($Sifra) < 6 || !preg_match("#[0-9]+#", $Sifra) 
                 || !preg_match("#[a-zA-Z]+#", $Sifra)) {
-            return $this->changePassword("Nova šifra nije validna.");
+            return $this->register("Šifra nije validna.");
         }
         
         if($Sifra != $Potvrda)
@@ -51,7 +52,16 @@ class Guest extends BaseController{
             return $this->register("Mejl nije dobro unesen!");
         }
         
-         // Dodati za datum u buducnosti
+        if($userModel->where(['Mejl' => $Mejl])->first() != null){
+            return $this->register("Korisnik sa datim mejlom već postoji!");    
+        }
+
+        
+        if(date("Y-m-d", time()) < $DatumRodjenja){
+            return $this->register("Neispravan datum"); 
+        }
+
+
   
         $data = [
             'KorisnickoIme'=>$KorisnickoIme,
@@ -114,12 +124,15 @@ class Guest extends BaseController{
             
             $type = 'User';
 
-            if($user->Tip == 'P')
+            if($user->Tip == 'P'){
                     $type = 'Premium';
-            else if($user->Tip == 'M')
+            }
+            else if($user->Tip == 'M'){
                     $type = 'Moderator';
-            else if($user->Tip == 'A')
+            }
+            else if($user->Tip == 'A'){
                     $type = 'Admin';
+            }
 
             $this->session->set('type', $type);
 
