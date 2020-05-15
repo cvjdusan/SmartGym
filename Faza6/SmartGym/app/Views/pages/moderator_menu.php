@@ -1,10 +1,10 @@
-    <div class="container-fluid fill bg-success"> 
+    <div class="container-fluid fill"> 
         <div class="row" id="content">
             <div class=" col-sm-12 col-md-12">
-                <h2 class="text-center"> Dobrodošli <?php echo $user->KorisnickoIme ?></h2>
+                <h2 class="text-center"> Dobrodošli <?php echo $userHeader->KorisnickoIme ?></h2>
                 <br/>
-                                <br/>
-                                                <br/>
+                    <br/>
+                    <br/>
                 <ul class="list-unstyled list-inline text-center">
                     <li>
                 <figure>

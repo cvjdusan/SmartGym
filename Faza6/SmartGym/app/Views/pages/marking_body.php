@@ -1,3 +1,7 @@
+<div class="container-fluid fill" style="margin-top: -400px;">
+    <div class="row">
+        <div class="offset-1 col-sm-12 col-md-10">
+
 <?php
 
 use App\Models\ExerciseEquipmentTypeModel;
@@ -7,8 +11,19 @@ use App\Models\ReservationModel;
 echo form_open("Admin/markResponse","method=post");
 
 if ($terms != null) {
-
-    echo "R.Br. &nbsp| &nbspKorinsičko Ime &nbsp| &nbspSprave &nbsp| &nbspDatum &nbsp| &nbspVreme<br/><br/>";
+    echo "<table class='table table-striped'>";
+    echo "<thead class='thead-dark'>
+            <tr>
+                <th scope='col'>R.Br.</th>
+                <th scope='col'>Korisničko Ime </th>
+                <th scope='col'>Sprave </th>
+                <th scope='col'>Datum</th>
+                <th scope='col'>Vreme</th>
+                <th scope='col'>#</th> 
+              </tr>
+            </thead>
+            <tbody>
+        ";
 
     $cnt = 1;
     $eetm = new ExerciseEquipmentTypeModel();
@@ -28,7 +43,8 @@ if ($terms != null) {
             array_push($equipmentType, $eetm->find($eq->IdTip));
         }
         
-        echo "$cnt. &nbsp| &nbsp$term->KorisnickoIme &nbsp| &nbsp[";
+        echo "<tr>";
+        echo "<td>$cnt</td><td>$term->KorisnickoIme</td><td>[";
         $num = count($equipmentType);
         foreach($equipmentType as $key => $eqt) {
             echo $eqt->Naziv;
@@ -36,19 +52,25 @@ if ($terms != null) {
                 echo ", &nbsp";
             }
         }
-        echo "] &nbsp| &nbsp$term->Datum &nbsp| &nbsp$term->Vreme";
-        echo " &nbsp&nbsp ";
-        echo '<input type="submit" name="dosao'.$term->IdTer.'" value="Došao"/>';
+        echo "]</td><td>$term->Datum</td><td>$term->Vreme</td>";
+        echo "<td>";
+        echo '<input class="btn btn-success" type="submit" name="dosao'.$term->IdTer.'" value="Došao"/>';
         echo " &nbsp";
-        echo '<input type="submit" name="ndosao'.$term->IdTer.'" value="Nije došao"/>';
-        echo "<br>";
+        echo '<input class="btn btn-danger" type="submit" name="ndosao'.$term->IdTer.'" value="Nije došao"/>';
+        echo "</td>";
+        echo "</tr>";
         $cnt++;
     }
-
+    echo "</tbody></table>";
 }
 else {
     echo "Nema zakazanih termina za ovaj datum";
 }
-
 echo form_close();
+?>
 
+
+
+        </div>
+    </div>
+</div>

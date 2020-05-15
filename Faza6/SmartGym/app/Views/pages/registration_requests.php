@@ -1,10 +1,29 @@
+<div class="container-fluid fill">
+    <div class="row" id="content">
+        <div class="offset-1 col-sm-12 col-md-10">
+
 <?php
+
+
 
 echo form_open("Admin/registrationResponse","method=post");
 
 if ($requests != null) {
 
-    echo "R.Br. &nbsp| &nbspKorinsičko Ime &nbsp| &nbspIme i prezime &nbsp| &nbspMejl &nbsp| &nbspDatum rodjenja &nbsp| &nbspTip<br/><br/>";
+    echo "<table class='table table-striped'>";
+    echo "<thead class='thead-dark'>
+            <tr>
+                <th scope='col'>R.Br.</th>
+                <th scope='col'>Korisničko Ime </th>
+                <th scope='col'>Ime i prezime</th>
+                <th scope='col'>Mejl</th>
+                <th scope='col'>Datum rodjenja</th>  
+                <th scope='col'>Tip</th> 
+                <th scope='col'>#</th> 
+              </tr>
+            </thead>
+            <tbody>
+        ";
 
     $cnt = 1;
     foreach($requests as $req) {
@@ -15,20 +34,28 @@ if ($requests != null) {
             case 'M': $type = "Moderator"; break;
             case 'A': $type = "Admin"; break;
         }
-        echo "$cnt. &nbsp| &nbsp$req->KorisnickoIme &nbsp| &nbsp$req->ImePrezime &nbsp| &nbsp$req->Mejl &nbsp| &nbsp$req->DatumRodjenja &nbsp| &nbsp$type";
-        echo " &nbsp&nbsp ";
-        echo '<input type="submit" name="prihvati'.$req->KorisnickoIme.'" value="Prihvati"/>';
+        echo "<tr>";
+        echo "<td>$cnt </td><td>$req->KorisnickoIme</td><td>$req->ImePrezime</td><td>$req->Mejl</td><td>$req->DatumRodjenja</td><td>$type</td>";
+       // echo " &nbsp&nbsp ";
+        echo "<td>";
+        echo '<input class="btn btn-success" type="submit" name="prihvati'.$req->KorisnickoIme.'" value="Prihvati"/>';
         echo " &nbsp";
-        echo '<input type="submit" name="odbij'.$req->KorisnickoIme.'" value="Odbij"/>';
-        echo "<br>";
+        echo '<input class="btn btn-danger" type="submit" name="odbij'.$req->KorisnickoIme.'" value="Odbij"/>';
+        echo "</td>";
         $cnt++;
+        echo "</tr>";
     }
-
+    echo "</tbody></table>";
 }
 else {
-    echo "Nema novih zahteva za registracijom";
+    echo "Nema novih zahteva za registracijom<br/><br/>";
 }
 
-echo "<br><br>";
+
 echo form_submit("nazad", "Nazad");
 echo form_close();
+
+?>
+        </div>
+    </div>
+</div>

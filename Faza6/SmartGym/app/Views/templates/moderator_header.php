@@ -31,7 +31,7 @@
                  <div class="dropdown-content">
                    <a href="<?php echo base_url()?>/Moderator/adding">Dodavanje sprave</a>
                     <a href="<?php echo base_url()?>/Moderator/removing">Uklanjanje sprave</a>
-                    <a href="<?php echo base_url()?>/Moderator/statistics">Statistika</a>
+                    <a href="<?php echo base_url()?>/Moderator/statistics">Statistika teretane</a>
                  </div>
                </div> 
                 <a class="nav-item nav-link <?php if($page == 'user_reservation') echo "active";?>" href="<?php echo base_url()?>/Moderator/reservation">Rezervacija</a>

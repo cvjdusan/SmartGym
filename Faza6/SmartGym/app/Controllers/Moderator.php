@@ -17,7 +17,7 @@ class Moderator extends Premium{
     protected function show($page, $data) {
         $data['controller']='Moderator';
         $data['page']=$page;
-        $data['user']=$this->session->get('user');
+        $data['userHeader']=$this->session->get('user');
         
         echo view('templates/moderator_header', $data);
         echo view ("pages/$page", $data);

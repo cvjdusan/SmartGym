@@ -16,7 +16,12 @@ class Admin extends Moderator{
     protected function show($page, $data) {
         $data['controller']='Admin';
         $data['page']=$page;
+        
+        $data['userHeader']=$this->session->get('user');
+        
+        echo view('templates/admin_header', $data);
         echo view ("pages/$page", $data);
+        echo view('templates/footer');
     } 
     
     public function index() {
@@ -134,8 +139,10 @@ class Admin extends Moderator{
             else {
                 $tm = new TermModel();
                 $terms = $tm->getTermsByDate($date);
-                echo view("pages/marking_header", ['date' => $date]);
-                echo view("pages/marking_body", ['terms' => $terms, 'date' => $date]);
+                    echo view('templates/admin_header', ['page' => ""]);
+                    echo view("pages/marking_header", ['date' => $date]);
+                    echo view("pages/marking_body", ['terms' => $terms, 'date' => $date]);
+                    echo view('templates/footer');
                 return;
             }
         }
@@ -155,8 +162,10 @@ class Admin extends Moderator{
             }
         }
         $terms = $tm->getTermsByDate($date);
+        echo view('templates/admin_header', ['page' => ""]);
         echo view("pages/marking_header", ['date' => $date]);
         echo view("pages/marking_body", ['terms' => $terms, 'date' => $date]);
+        echo view('templates/footer');
     }
     
 }
