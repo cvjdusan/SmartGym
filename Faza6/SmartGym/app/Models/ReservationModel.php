@@ -24,5 +24,9 @@ class ReservationModel extends Model{
       
       return  $arr;
   }
+  
+  public function findForTerm($term) {
+      return $this->where('IdTer', $term)->findAll();
+  }
         
 }

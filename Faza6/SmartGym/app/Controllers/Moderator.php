@@ -47,8 +47,9 @@ class Moderator extends Premium{
     }
     
     public function addType() {
+        $path = $this->session->get('type');
          if (isset($_POST['nazad'])) {
-             return redirect()->to(site_url("Moderator/adding"));
+             return redirect()->to(site_url("$path/adding"));
          }
         if (!$this->validate(['naziv'=>'required|max_length[30]',
                 'opis'=>'required|max_length[200]',
@@ -84,12 +85,13 @@ class Moderator extends Premium{
                 ]);
             }
         }
-        return redirect()->to(site_url("Moderator/adding"));
+        return redirect()->to(site_url("$path/adding"));
     }
     
     public function addEquipment() {
+        $path = $this->session->get('type');
         if (isset($_POST['nazad'])) {
-             return redirect()->to(site_url("Moderator"));
+             return redirect()->to(site_url("$path"));
          }
         $eetm = new ExerciseEquipmentTypeModel();
         $types = $eetm->findAll();
@@ -100,18 +102,19 @@ class Moderator extends Premium{
                     'IdTip'=>$type->IdTip,
                     'Aktivna'=>true
                 ]);
-                return redirect()->to(site_url("Moderator/adding"));
+                return redirect()->to(site_url("$path/adding"));
             }
         }
         if (isset($_POST['dodajtip'])) {
-            return redirect()->to(site_url("Moderator/addingType"));
+            return redirect()->to(site_url("$path/addingType"));
         }
-        return redirect()->to(site_url("Moderator"));
+        return redirect()->to(site_url("$path"));
     }
     
     public function removeEquipment() {
+        $path = $this->session->get('type');
         if (isset($_POST['nazad'])) {
-             return redirect()->to(site_url("Moderator"));
+             return redirect()->to(site_url("$path"));
          }
         $eetm = new ExerciseEquipmentTypeModel();
         $types = $eetm->findAll();
@@ -119,10 +122,10 @@ class Moderator extends Premium{
             if (isset($_POST['uklonispr'.$type->IdTip])) {
                 $eem = new ExerciseEquipmentModel();
                 $eem->removeEq($type->IdTip);
-                return redirect()->to(site_url("Moderator/removing"));
+                return redirect()->to(site_url("$path/removing"));
             }
         }
-        return redirect()->to(site_url("Moderator"));
+        return redirect()->to(site_url("$path"));
     }
     
     public function statistics() {

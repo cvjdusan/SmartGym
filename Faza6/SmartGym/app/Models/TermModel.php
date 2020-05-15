@@ -18,5 +18,9 @@ class TermModel extends Model{
       return $this->where(['Datum' => $Date, 'Vreme' => $Time, 'KorisnickoIme' =>
           $user->KorisnickoIme])->findAll();
   }
+  
+  public function getTermsByDate($date) {
+      return $this->where('Datum', $date)->where('Status', 'R')->findAll();
+  }
         
 }

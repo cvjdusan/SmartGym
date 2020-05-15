@@ -4,7 +4,7 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Filters\FilterInterface;
 
-class ModeratorFilter implements FilterInterface
+class AdminFilter implements FilterInterface
 {
     public function before(RequestInterface $request)
     {
@@ -13,7 +13,7 @@ class ModeratorFilter implements FilterInterface
        if ($type == null) {
            $type = "Guest";
        }
-       if($type != 'Moderator') {
+       if($type != 'Admin') {
             return redirect()->to(site_url("$type"));
        }
     }

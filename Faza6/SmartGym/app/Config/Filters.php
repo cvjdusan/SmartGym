@@ -13,6 +13,7 @@ class Filters extends BaseConfig
                 'guest' => \App\Filters\GuestFilter::class,
                 'user' => \App\Filters\UserFilter::class,
                 'moderator' => \App\Filters\ModeratorFilter::class,
+                'admin' => \App\Filters\AdminFilter::class,
 	];
 
 	// Always applied before every request
@@ -39,6 +40,7 @@ class Filters extends BaseConfig
 
             'user' => ['before' => ['User/*', 'User']],
             'guest' => ['before' => ['Guest/*', 'Guest', '/']],          
-            //'moderator' => ['before' => ['Moderator/*', 'Moderator']],
+            'moderator' => ['before' => ['Moderator/*', 'Moderator']],
+            'admin' => ['before' => ['Admin/*', 'Admin']],
         ];
 }

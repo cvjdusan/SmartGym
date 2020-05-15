@@ -14,4 +14,16 @@ class UserModel extends Model {
         $this->set(['Sifra'=> $NovaSifra]);
         $this->update('Korisnik');
     }
+    
+       public function getUsers() {
+        $res1 = $this->where('Tip', 'O')->where('Status', 'P')->findAll();
+        $res2 = $this->where('Tip', 'P')->where('Status', 'P')->findAll();
+        $res3 = $this->where('Tip', 'M')->where('Status', 'P')->findAll();
+        $res = array_merge($res1, $res2, $res3);
+        return $res;
+    }
+    
+    public function getRegistrationRequests() {
+        return $this->where('Status', 'C')->findAll();
+    }
 }
