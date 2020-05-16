@@ -87,7 +87,7 @@ if($session->has('Datum')) {
                 $div = '<div class="col-3 col-sm-2 col-md-2 reservationDiv">';
                 $divF = '<div class="col-3 col-sm-2 offset-md-1 col-md-2 reservationDiv">';
                 $end = '</div>';
-                
+                sort($eq);
                 for($i = 0; $i < count($eq); $i++) {
                     if(!in_array($eq[$i]['IdSpr'], $reserved)){
                         $string .= $row;

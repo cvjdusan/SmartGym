@@ -20,7 +20,8 @@ echo "<thead class='thead-dark'>
     ";
 
 
-echo form_open("Moderator/removeEquipment","method=post");
+$session = session();
+echo form_open($session->get('type')."/removeEquipment","method=post");
 $eetm = new ExerciseEquipmentTypeModel();
 $eem = new ExerciseEquipmentModel();
 $types = $eetm->findAll();
@@ -28,7 +29,7 @@ $types = $eetm->findAll();
 foreach($types as $type) {
     echo "<tr>";
     echo "<td>";
-    echo anchor("Moderator/showEquipment/{$type->IdTip}","$type->Naziv");
+    echo anchor($session->get('type')."/showEquipment/{$type->IdTip}","$type->Naziv");
     echo "</td>";
     echo "<td>";
     $count = $eem->cnt($type->IdTip);
