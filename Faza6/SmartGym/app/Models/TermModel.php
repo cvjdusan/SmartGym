@@ -22,5 +22,21 @@ class TermModel extends Model{
   public function getTermsByDate($date) {
       return $this->where('Datum', $date)->where('Status', 'R')->findAll();
   }
+  
+    public function getTermsByUser($user) {
+      return $this->where('KorisnickoIme', $user->KorisnickoIme)->where('Status', 'D')->findAll();
+  }
+  
+  public function getAllTerms() {
+      return $this->where('Status', 'D')->findAll();
+  }
+  
+  public function getTermsByUserAndDate($user, $date) {
+      return $this->like('KorisnickoIme', $user)->where('Datum', $date)->where('Status', 'R')->findAll();
+  }
+  
+  public function getUnmarkedTermsByUser($user) {
+      return $this->where('KorisnickoIme', $user)->where('Status', 'R')->findAll();
+  }
         
 }

@@ -36,5 +36,9 @@ class TargetedMuscleGroupModel extends Model{
   public function findForType($id) {
            return $this->where('IdTip', $id)->findAll();
        }
+       
+  public function findForGroup($id) {
+      return $this->where('IdGru', $id)->findAll();
+  }
   
 }

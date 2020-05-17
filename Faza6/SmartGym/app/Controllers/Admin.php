@@ -59,6 +59,11 @@ class Admin extends Moderator{
         $user = $this->request->getVar('user');
         $um = new UserModel();
         $um->update($user, ['Status' => 'B']);
+        $tm = new TermModel();
+        $terms = $tm->getUnmarkedTermsByUser($user);
+        foreach ($terms as $term) {
+            $tm->update($term->IdTer, ['Status' => 'N']);
+        }
         return redirect()->to(site_url("Admin/blocking"));
     }
     
@@ -139,10 +144,8 @@ class Admin extends Moderator{
             else {
                 $tm = new TermModel();
                 $terms = $tm->getTermsByDate($date);
-                    echo view('templates/admin_header', ['page' => ""]);
-                    echo view("pages/marking_header", ['date' => $date]);
-                    echo view("pages/marking_body", ['terms' => $terms, 'date' => $date]);
-                    echo view('templates/footer');
+                echo view("pages/marking_header", ['date' => $date]);
+                echo view("pages/marking_body", ['terms' => $terms, 'date' => $date, 'text' => ""]);
                 return;
             }
         }
@@ -152,7 +155,14 @@ class Admin extends Moderator{
     public function markResponse() {
         $date = $this->request->getVar('date');
         $tm = new TermModel();
-        $terms = $tm->getTermsByDate($date);
+        $user = $this->request->getVar('user');
+        if ($user != "") { $terms = $tm->getTermsByUserAndDate($user, $date); }
+        else { $terms = $tm->getTermsByDate($date); }
+        if (isset($_POST['search'])) {
+                 echo view("pages/marking_header", ['date' => $date]);
+                 echo view("pages/marking_body", ['terms' => $terms, 'date' => $date, 'text' => $user]);
+                 return;
+            }
          foreach($terms as $term) {
             if (isset($_POST['dosao'.$term->IdTer])) {
                 $tm->update($term->IdTer, ['Status' => 'D']);
@@ -161,11 +171,10 @@ class Admin extends Moderator{
                 $tm->update($term->IdTer, ['Status' => 'N']);
             }
         }
-        $terms = $tm->getTermsByDate($date);
-        echo view('templates/admin_header', ['page' => ""]);
+        if ($user != "") { $terms = $tm->getTermsByUserAndDate($user, $date); }
+        else { $terms = $tm->getTermsByDate($date); }
         echo view("pages/marking_header", ['date' => $date]);
-        echo view("pages/marking_body", ['terms' => $terms, 'date' => $date]);
-        echo view('templates/footer');
+        echo view("pages/marking_body", ['terms' => $terms, 'date' => $date, 'text' => $user]);
     }
     
 }

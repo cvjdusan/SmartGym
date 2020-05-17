@@ -14,6 +14,7 @@ class Filters extends BaseConfig
                 'user' => \App\Filters\UserFilter::class,
                 'moderator' => \App\Filters\ModeratorFilter::class,
                 'admin' => \App\Filters\AdminFilter::class,
+                'premium' => \App\Filters\PremiumFilter::class,
 	];
 
 	// Always applied before every request
@@ -42,5 +43,6 @@ class Filters extends BaseConfig
             'guest' => ['before' => ['Guest/*', 'Guest', '/']],          
             'moderator' => ['before' => ['Moderator/*', 'Moderator']],
             'admin' => ['before' => ['Admin/*', 'Admin']],
+            'premium' => ['before' => ['Premium/*', 'Premium']],
         ];
 }
