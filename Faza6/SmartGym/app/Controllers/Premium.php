@@ -19,6 +19,21 @@ use App\Models\TargetedMuscleGroupModel;
 
 class Premium extends User{
     
+    
+    protected function show($page, $data) {        
+        $data['controller']='Premium';
+        $data['page']=$page;
+        $data['userHeader']=$this->session->get('user');
+        
+        echo view('templates/premium_header', $data);
+        echo view ("pages/$page", $data);
+        echo view('templates/footer');
+    }
+    
+    public function index(){
+        $this->show("premium_home", []);
+    }
+    
     public function getStatistics() {
         $user = $this->session->get('user');
         $tm = new TermModel();
@@ -91,8 +106,8 @@ class Premium extends User{
             return $b['cnt'] <=> $a['cnt'];
         });
         $allEq = $this->getAllTimeFavourites();
-        echo view("pages/premium_statistics", ['stats'=>$stats, 'limit'=>$limit, 'path'=>$path, 'myEq'=>$myEq, 'allEq'=>$allEq]);
-        //return $this->show("premium_statistics", ['stats'=>$stats, 'limit'=>$limit, 'path'=>$path, 'myEq'=>$myEq, 'allEq'=>$allEq]);
+        //echo view("pages/premium_statistics", ['stats'=>$stats, 'limit'=>$limit, 'path'=>$path, 'myEq'=>$myEq, 'allEq'=>$allEq]);
+        return $this->show("premium_statistics", ['stats'=>$stats, 'limit'=>$limit, 'path'=>$path, 'myEq'=>$myEq, 'allEq'=>$allEq]);
     }
     
     protected function getAllTimeFavourites() {

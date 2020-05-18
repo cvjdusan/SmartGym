@@ -144,8 +144,10 @@ class Admin extends Moderator{
             else {
                 $tm = new TermModel();
                 $terms = $tm->getTermsByDate($date);
+                echo view('templates/admin_header', ['page' => "admin_menu"]);
                 echo view("pages/marking_header", ['date' => $date]);
                 echo view("pages/marking_body", ['terms' => $terms, 'date' => $date, 'text' => ""]);
+                echo view('templates/footer');
                 return;
             }
         }
@@ -173,8 +175,10 @@ class Admin extends Moderator{
         }
         if ($user != "") { $terms = $tm->getTermsByUserAndDate($user, $date); }
         else { $terms = $tm->getTermsByDate($date); }
+        echo view('templates/admin_header', ['page' => "admin_menu"]);
         echo view("pages/marking_header", ['date' => $date]);
         echo view("pages/marking_body", ['terms' => $terms, 'date' => $date, 'text' => $user]);
+        echo view('templates/footer');
     }
     
 }
