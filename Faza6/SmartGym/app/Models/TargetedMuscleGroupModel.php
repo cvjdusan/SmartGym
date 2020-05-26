@@ -2,11 +2,31 @@
 
 use CodeIgniter\Model;
 
+/*
+ * 
+ * Model koji opisuje koja grupa misica gadja koji tip
+ * i kojom jacinom  
+ * 
+ * @version 1.0
+ * 
+ */
+
+
 class TargetedMuscleGroupModel extends Model{
   protected $table      = 'pogodjena_grupa_misica';
 //  protected $primaryKey = 'IdRez';
   protected $returnType = 'object';
   protected $allowedFields = ['IdTip', 'IdGru', 'Jacina'];
+  
+  
+  /*
+   * @author Dušan Cvjetičanin 170169
+   * 
+   * Pronalazak grupe misica sprava
+   * 
+   * @param typeEq
+   * 
+   */
   
   public function findTarget($typeEq){
         $musc = [];

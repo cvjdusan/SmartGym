@@ -1,3 +1,5 @@
+<!-- @author Dušan Cvjetičanin 170169 -->
+
 <?php
 $Date = null;
 $Hour = null;
@@ -115,6 +117,3 @@ if($session->has('Datum')) {
         ?>
       </form>
     </div>
-
-
-                        

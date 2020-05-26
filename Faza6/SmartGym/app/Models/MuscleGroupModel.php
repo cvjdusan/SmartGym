@@ -2,11 +2,28 @@
 
 use CodeIgniter\Model;
 
+/*
+ * Model koji sadrzi naziv grupe misica
+ * 
+ * @version 1.0
+ * 
+ */
+
 class MuscleGroupModel extends Model{
   protected $table      = 'grupa_misica';
   protected $primaryKey = 'IdGru';
   protected $returnType = 'object';
   protected $allowedFields = ['IdGru', 'Naziv'];
+  
+    /*
+    * 
+    * @author Dušan Cvjetičanin 170169
+    * 
+    * Pronalazak tipova mišića
+    * 
+    * @param musc
+    *  
+    */
   
   
   public function findMuscle($musc){
@@ -35,6 +52,14 @@ class MuscleGroupModel extends Model{
         
         return $eq;
   }
+  
+  /*
+   * Pomoćna funkcija sa proveru već dodatog idSpr
+   * 
+   * @param temp
+   * @param eq
+   * 
+   */
   
   private function alreadyIn($temp, $eq){
       

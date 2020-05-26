@@ -3,24 +3,71 @@
 use App\Models\UserModel;
 use DateTime;
 
+/*
+ * 
+ * @author Dušan Cvjetičanin 170169
+ * 
+ */
+
+/**
+ * 
+ * Guest - klasa dostupnih opcija za gosta
+ * 
+ * @version 1.0
+ */
+
 class Guest extends BaseController{
+    
+    /**
+     * Funkcija koja vraća prikaz stranice sa 
+     * odgovarajućim podacima
+     * 
+     * @param type $page
+     * @param type $data
+     * 
+     * @return void
+     */
     
     protected function show($page, $data) {
         $data['controller']='Guest';
         $data['page']=$page;
-      //  echo site_url();
+
         echo view('templates/guest_header', $data);
         echo view ("pages/$page", $data);
         echo view('templates/footer');
     }
     
+    /*
+     * Pomoćne funkcije za pozivanje show funckije
+     * u zavisnosti od odgovarajuće stranice 
+     * 
+     * @return void
+     * 
+     */
+    
     public function index(){
         $this->show('guest_home', []);
     }
     
-    public function register($errorMsg=null){
-        $this->show('guest_register', ['errorMsg'=>$errorMsg]);
+    public function register(){
+        $this->show('guest_register', []);
     }
+    
+    public function login(){
+        $this->show('guest_login', []);
+    }
+    
+    public function changePassword(){
+        $this->show('change_password', []);
+    }
+    
+    /*
+     * Funckija koja dodaje novog korisnika u bazu, ako su podaci ispravni
+     * ukoliko nisu, vraća se tip greške
+     * 
+     * @return JSON
+     * 
+     */
     
     public function addUser(){      
         if(!is_array($_POST) || count($_POST)==0){
@@ -38,34 +85,33 @@ class Guest extends BaseController{
         $user = $userModel->find($KorisnickoIme);
         
         if($user != null)
-            return $this->register("Korisnik već postoji!");
+            return $this->response->setJSON(['msg' => 'Korisnik već postoji']);
         
         if (strlen($Sifra) < 6 || !preg_match("#[0-9]+#", $Sifra) 
                 || !preg_match("#[a-zA-Z]+#", $Sifra)) {
-            return $this->register("Šifra nije validna.");
+            return $this->response->setJSON(['msg' => 'Šifra nije validna']);
         }
         
         if($Sifra != $Potvrda)
-            return $this->register("Šifre se moraju poklapati!");
+            return $this->response->setJSON(['msg' => 'Šifre se moraju poklapati']);
         
         if (!filter_var($Mejl, FILTER_VALIDATE_EMAIL)){
-            return $this->register("Mejl nije dobro unesen!");
+            return $this->response->setJSON(['msg' => 'Mejl nije validan']);
         }
         
         if($userModel->where(['Mejl' => $Mejl])->first() != null){
-            return $this->register("Korisnik sa datim mejlom već postoji!");    
+            return $this->response->setJSON(['msg' => 'Mejl već postoji u bazi.']);  
         }
-
-        
+     
         if(date("Y-m-d", time()) < $DatumRodjenja){
-            return $this->register("Neispravan datum"); 
+            return $this->response->setJSON(['msg' => 'Datum nije validan']); 
         }
+        
+        $Sifra_h = password_hash($Sifra, PASSWORD_BCRYPT, ['cost' => 8]); 
 
-
-  
         $data = [
             'KorisnickoIme'=>$KorisnickoIme,
-            'Sifra'=>$Sifra,
+            'Sifra'=>$Sifra_h,
             'ImePrezime'=>$ImePrezime,
             'Mejl'=>$Mejl,
             'DatumRodjenja'=>$DatumRodjenja,
@@ -75,18 +121,15 @@ class Guest extends BaseController{
                 
         $userModel->insert($data);
 
-        $this->register("Uspešno ste poslali zahtev za registraciju.");
-    }
-    
-    public function login($errorMsg=null){
-        $this->show('guest_login', ['errorMsg'=>$errorMsg]);
+        return $this->response->setJSON(['msg' => 'Zahtev za registraciju je uspešno poslat.']);
     }
             
     /* 
-     Status = 'O' odbijen
-     Status = 'B' blokiran
-     Status = 'P' prihvacen
-     Status = 'C' cekanje 
+     * Pomoćna funkcija za određivanje statusa korisnika
+     * 
+     * @param User
+     * @return String
+     * 
      */
       
     protected function statusMsg($user){
@@ -102,9 +145,13 @@ class Guest extends BaseController{
           
     }
     
-    public function loginSubmit(){  
-  
-
+    /*
+     * Funckija za autorizaciju korisnika ukoliko su podaci ispravni
+     * 
+     * @return JSON
+     */
+    
+    public function loginSubmit(){
        if(!is_array($_POST) || count($_POST)==0){
            return redirect()->to('login');
        }
@@ -113,11 +160,14 @@ class Guest extends BaseController{
        $user=$userModel->find($this->request->getVar('KorisnickoIme'));
         
        if($user==null)
-           return $this->login("Korisnik ne postoji");
-          
-        if($user->Sifra!=$this->request->getVar('Sifra'))
-           return $this->login("Pogrešna šifra");
-        
+            return $this->response->setJSON(['errorMsg' => 'Korisnik ne postoji']);
+       
+       
+       $hash_pwd = $this->request->getVar('Sifra');
+
+       if(password_verify($hash_pwd, $user->Sifra) == false)
+           return $this->response->setJSON(['errorMsg' => 'Pogrešna šifra']);
+     
         if($user->Status == 'P'){  
             
             $this->session->set('user', $user); 
@@ -136,22 +186,24 @@ class Guest extends BaseController{
 
             $this->session->set('type', $type);
 
-            return redirect()->to(site_url($type));
+            return $this->response->setJSON(['redirect' => base_url().'/'.$type]);
+            //return redirect()->to(site_url($type));
         } else
-            return $this->login($this->statusMsg($user));
+            return $this->response->setJSON(['errorMsg' => $this->statusMsg($user)]);
     }
     
-    
-    public function changePassword($errorMsg = null){
-        $this->show('change_password', ['errorMsg'=>$errorMsg]);
-    }
-    
+   
+   /*
+    * Funkcija za promenu šifre ukoliko su podaci validni
+    * 
+    * @return JSON
+    */
+   
     public function newPassword(){
         if(!is_array($_POST) || count($_POST)==0){
            return redirect()->to('changePassword');
-       }
-        
-        
+        }
+          
         $userModel=new UserModel(); 
         $KorisnickoIme=$this->request->getVar('KorisnickoIme');
         $Sifra=$this->request->getVar('Sifra');
@@ -161,25 +213,33 @@ class Guest extends BaseController{
         $user = $userModel->find($KorisnickoIme);
         
         if($user==null){
-           return $this->changePassword("Korisnik ne postoji");
+            return $this->response->setJSON(['msg' => 'Korisnik ne postoji.']);
         }
           
-        if($user->Sifra!=$Sifra){
-           return $this->changePassword("Pogrešna šifra");
-        }
+
+       if(password_verify($Sifra, $user->Sifra) == false)
+           return $this->response->setJSON(['msg' => 'Stara šifra nije dobra.']);
         
         if (strlen($NovaSifra) < 6 || !preg_match("#[0-9]+#", $NovaSifra) 
                 || !preg_match("#[a-zA-Z]+#", $NovaSifra)) {
-            return $this->changePassword("Nova šifra nije validna.");
+            return $this->response->setJSON(['msg' => 'Nova šifra nije validna.']);
         }
         
-        if($NovaSifra != $Potvrda){
-              return $this->changePassword("Šifre se moraju poklapati");
-        }
+       if(password_verify($NovaSifra, $user->Sifra) == true){
+            return $this->response->setJSON(['msg' => 'Nova šifra ne sme biti jednaka staroj.']);
+       }
         
-        $userModel->update($KorisnickoIme, ['Sifra'=>$NovaSifra]);
+       if($NovaSifra != $Potvrda){
+            return $this->response->setJSON(['msg' => 'Šifre se moraju poklapati.']);
+       }
         
-        return $this->changePassword("Uspesna promena!");
-    }
-    
+        if($user->Status != 'P')
+            return $this->response->setJSON(['msg' => 'Vaš nalog mora biti odobren.']);
+        
+        $Sifra_h = password_hash($NovaSifra, PASSWORD_BCRYPT, ['cost' => 8]); 
+                
+        $userModel->update($KorisnickoIme, ['Sifra'=>$Sifra_h]);
+        
+        return $this->response->setJSON(['msg' => 'Šifra je uspešno promenjena.']);
+    } 
 }

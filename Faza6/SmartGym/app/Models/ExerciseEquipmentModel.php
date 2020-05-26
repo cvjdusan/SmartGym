@@ -2,6 +2,12 @@
 
 use CodeIgniter\Model;
 
+/*
+ * Model koji sadrzi sprave, tip i njihovu aktivnost
+ * 
+ * @version 1.0
+ * 
+ */
 
 class ExerciseEquipmentModel extends Model{
   protected $table      = 'sprava';
@@ -10,8 +16,12 @@ class ExerciseEquipmentModel extends Model{
   protected $allowedFields = ['IdSpr', 'IdTip', 'Aktivna'];
 
   
-  // dodati u niz prvi id sprave koji je aktivan i koji nije u eqIds
-  // potom iz tog niza spojiti sa tipom sprave i grupom misica
+ /*
+ * 
+ * @author Dušan Cvjetičanin 170169
+ * 
+ * Pronalazak aktivnih sprava 
+ */
   
   public function findActive(){
     return $this->where(['Aktivna' => "1"])->findAll();

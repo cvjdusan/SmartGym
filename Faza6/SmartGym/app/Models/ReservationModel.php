@@ -2,6 +2,12 @@
 
 use CodeIgniter\Model;
 
+/*
+ * Model koji sadrzi rezervacije korisnika
+ * 
+ * @version 1.0
+ * 
+ */
 
 class ReservationModel extends Model{
   protected $table      = 'rezervacija';
@@ -9,6 +15,14 @@ class ReservationModel extends Model{
   protected $returnType = 'object';
   protected $allowedFields = ['IdRez', 'IdTer', 'IdSpr'];
 
+  /*
+    * @author Dušan Cvjetičanin 170169
+   * 
+   * Pronalazak id-ova termina
+   * 
+   * @param terms
+   * 
+   */
   
   public function findIds($terms){
       $res = [];

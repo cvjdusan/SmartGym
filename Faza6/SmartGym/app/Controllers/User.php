@@ -6,32 +6,67 @@ use App\Models\MuscleGroupModel;
 use App\Models\ReservationModel;
 use App\Models\TermModel;
 use App\Models\TargetedMuscleGroupModel;
+use App\Models\UserModel;
+
+
+/**
+ * 
+ * User - klasa dostupnih opcija za običnog korisnika
+ * 
+ * @version 1.0
+ * 
+ */
+
 
 class User extends BaseController{
+    
+    /**
+     * 
+     * @author Dušan Cvjetičanin 170169
+     * 
+     * Funkcija koja vraća prikaz stranice sa 
+     * odgovarajućim podacima
+     * 
+     * @param type $page
+     * @param type $data
+     * 
+     * @return void
+     */
     
     protected function show($page, $data) {        
         $data['controller']='User';
         $data['page']=$page;
+  
         
         echo view('templates/user_header', $data);
         echo view ("pages/$page", $data);
         echo view('templates/footer');
     }
     
+     /*
+     * @author Dušan Cvjetičanin 170169
+     * Pomoćne funkcije za pozivanje show funckije
+     * u zavisnosti od odgovarajuće stranice 
+     * 
+     * return void
+     * 
+     */
+    
     public function index(){
- //       if($this->session->get('type') != 'User')
-   //         return redirect()->to('Moderator');
-        
         $this->show("user_home", []);
     }
     
-    public function reservation($errorMsg=null, $eq=null, $reserved=null){
-     //  if($this->session->get('type') != 'User')
-       //    return redirect()->to(site_url('Moderator'));
-                
+    public function reservation($errorMsg=null, $eq=null, $reserved=null){       
         $this->show('user_reservation', ['errorMsg'=>$errorMsg, 'eq'=>$eq, 'reserved'=>$reserved]);
     }
     
+     /*
+     * @author Dušan Cvjetičanin 170169
+     * Funckija koja pronalazi dostupne sprave u
+     * odgovarajućem terminu 
+     * 
+     * 
+     */
      
     public function reservationSubmit(){
         if(!is_array($_POST) || count($_POST)==0){
@@ -60,13 +95,17 @@ class User extends BaseController{
         $targetModel = new TargetedMuscleGroupModel();
         $muscleModel = new MuscleGroupModel();
         
+        // pronalazak svih termina 
         $terms = $termModel->getTerms($Date, $Time);
+        // pronalazak termina trenutnog korisnika
         $termsMe = $termModel->getTermsMe($Date, $Time, $this->session->get('user'));
         $reserved = [];
         $reservedByMe = [];
              
         if($terms != null){
+            // pronalazak svih rez sprava
             $reserved = $resModel->findIds($terms);
+            // pronalazak svih rez sprava od strane korisnika
             $reservedByMe = $resModel->findIds($termsMe);
         }
         
@@ -74,20 +113,31 @@ class User extends BaseController{
             return $this->reservation("Ne mozete rezervisati vise od dve sprave u datom terminu.");
         }      
         
+        //pronazak aktivnih sprava
         $activeEq = $eqModel->findActive();
+        //pronalazak njihov tipova
         $typeEq = $typeModel->findTypes($activeEq);
+        //trazenje grupa misica koje povezuje
         $targetEq = $targetModel->findTarget($typeEq);
+        //trazanje imena tih misica
         $eq = $muscleModel->findMuscle($targetEq);
         
-        // msm da vazi ovaj uslov
+        // ako su sve sprave rezervisane
         if( count($eq) == count($reserved)){
-            return $this->reservation("Sve sprave su zauzete", $eq, $reserved);     
+            return $this->reservation("Sprave nisu dostupne u ovom terminu.", $eq, $reserved);     
         }
 
         
     
         return $this->reservation("", $eq, $reserved);
    }
+   
+     /*
+     * @author Dušan Cvjetičanin 170169
+     * Funckija dodaje izabranu rezervaciju
+     * 
+     * @return void;
+     */
    
    public function reservationAdd(){
         if(!is_array($_POST) || count($_POST)==0){
@@ -132,11 +182,14 @@ class User extends BaseController{
        return redirect()->to('reservation');
    }
 
+     /*
+     * @author Dušan Cvjetičanin 170169
+     * Kraj sesije i vraćanje na početni ekran
+     * 
+     * @return void;
+     */
    public function logout(){
        $this->session->destroy();
        return redirect()->to(site_url('/'));
    }
-    
-
-    
 }

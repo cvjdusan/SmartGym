@@ -29,7 +29,7 @@
         
         chart.draw(data, options);
       }
-    </script>
+ </script>
 
 
 <div class="container-fluid fill">

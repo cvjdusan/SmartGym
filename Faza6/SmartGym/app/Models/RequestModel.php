@@ -2,6 +2,14 @@
 
 use CodeIgniter\Model;
 
+/*
+ * 
+ * Model koji se bavi zahtevima korisnika
+ * 
+ * @version 1.0
+ * 
+ */
+
 class RequestModel extends Model{
   protected $table      = 'zahtev';
   protected $primaryKey = 'IdZah';
