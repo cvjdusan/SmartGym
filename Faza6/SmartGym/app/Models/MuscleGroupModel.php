@@ -5,6 +5,8 @@ use CodeIgniter\Model;
 /*
  * Model koji sadrzi naziv grupe misica
  * 
+ * @author Marko Pantić 0440/2016
+ * 
  * @version 1.0
  * 
  */

@@ -7,6 +7,8 @@ use CodeIgniter\Model;
  * Model koji opisuje koja grupa misica gadja koji tip
  * i kojom jacinom  
  * 
+ * @author Marko Pantić 0440/2016
+ * 
  * @version 1.0
  * 
  */
@@ -53,10 +55,22 @@ class TargetedMuscleGroupModel extends Model{
         return $musc;
   }
   
+  /**
+   * Vraća redove sa određenim tipom sprave
+   * 
+   * @param int $id
+   * @return array
+   */
   public function findForType($id) {
            return $this->where('IdTip', $id)->findAll();
        }
-       
+   
+   /**
+   * Vraća redove sa određenom grupom mišića
+   * 
+   * @param int $id
+   * @return array
+   */
   public function findForGroup($id) {
       return $this->where('IdGru', $id)->findAll();
   }

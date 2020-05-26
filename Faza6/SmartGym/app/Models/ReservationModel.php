@@ -39,6 +39,12 @@ class ReservationModel extends Model{
       return  $arr;
   }
   
+  /**
+   * Vraća rezervacije određenog termina
+   * 
+   * @param int $term
+   * @return array
+   */
   public function findForTerm($term) {
       return $this->where('IdTer', $term)->findAll();
   }

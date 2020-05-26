@@ -10,16 +10,21 @@ use App\Models\MuscleGroupModel;
 use App\Models\TargetedMuscleGroupModel;
 
 /**
- * Description of Premium
+ * Premium - klasa koja realizuje akcije premium korisnika
  *
- * @author Marko
+ * @author Marko Pantić 0440/2016
+ * 
+ * @version 1.0
  */
-
-//Kad se napravi frontend u funkciji getStatistics na kraju obristati liniju echo view i odkomentarisati return $this->show
-
 class Premium extends User{
     
-    
+    /**
+     * Funkcija za prikaz veb stranice. Prima naziv stranice i dodatne podatke
+     * 
+     * @param string $page
+     * @param string[] $data
+     * @return void
+     */
     protected function show($page, $data) {        
         $data['controller']='Premium';
         $data['page']=$page;
@@ -30,10 +35,20 @@ class Premium extends User{
         echo view('templates/footer');
     }
     
+    /**
+     * Funkcija za prikaz početne veb stranice
+     * 
+     * @return void
+     */
     public function index(){
         $this->show("premium_home", []);
     }
     
+    /**
+     * Funkcija za dohvatanje premium statistike korišenih sprava
+     * 
+     * @return function $this->show
+     */
     public function getStatistics() {
         $user = $this->session->get('user');
         $tm = new TermModel();
@@ -106,10 +121,14 @@ class Premium extends User{
             return $b['cnt'] <=> $a['cnt'];
         });
         $allEq = $this->getAllTimeFavourites();
-        //echo view("pages/premium_statistics", ['stats'=>$stats, 'limit'=>$limit, 'path'=>$path, 'myEq'=>$myEq, 'allEq'=>$allEq]);
         return $this->show("premium_statistics", ['stats'=>$stats, 'limit'=>$limit, 'path'=>$path, 'myEq'=>$myEq, 'allEq'=>$allEq]);
     }
     
+    /**
+     * Pomoćna funkcija za dohvatanje niza svih sprava sortiranog po broju korišćenja
+     * 
+     * @return array
+     */
     protected function getAllTimeFavourites() {
         $tm = new TermModel();
         $eetm = new ExerciseEquipmentTypeModel();
@@ -143,6 +162,12 @@ class Premium extends User{
         return $allEq;
     }
     
+    /**
+     * Funkcija za prikaz tipa sprave. Prima id tipa sprave
+     * 
+     * @param int $id
+     * @return void
+     */
     public function showEquipment($id) {
         $eem = new ExerciseEquipmentTypeModel();
         $eq = $eem->find($id);

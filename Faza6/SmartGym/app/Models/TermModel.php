@@ -44,22 +44,52 @@ class TermModel extends Model{
           $user->KorisnickoIme])->findAll();
   }
   
+  /**
+   * Vraća termine određenog datuma
+   * 
+   * @param Date $date
+   * @return array
+   */
   public function getTermsByDate($date) {
       return $this->where('Datum', $date)->where('Status', 'R')->findAll();
   }
   
+  /**
+   * Vraća termine određenog korisnika
+   * 
+   * @param array $user
+   * @return array
+   */
     public function getTermsByUser($user) {
       return $this->where('KorisnickoIme', $user->KorisnickoIme)->where('Status', 'D')->findAll();
   }
   
+  /**
+   * Vraća sve realizovane termine
+   * 
+   * @return array
+   */
   public function getAllTerms() {
       return $this->where('Status', 'D')->findAll();
   }
   
+  /**
+   * Vraća termine određenog korisnika i datuma
+   * 
+   * @param string $user
+   * @param Date $date
+   * @return array
+   */
   public function getTermsByUserAndDate($user, $date) {
       return $this->like('KorisnickoIme', $user)->where('Datum', $date)->where('Status', 'R')->findAll();
   }
   
+  /**
+   * Vraća sve neobrađene termine određenog korisnika
+   * 
+   * @param string $user
+   * @return array
+   */
   public function getUnmarkedTermsByUser($user) {
       return $this->where('KorisnickoIme', $user)->where('Status', 'R')->findAll();
   }

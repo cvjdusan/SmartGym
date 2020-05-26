@@ -32,6 +32,11 @@ class UserModel extends Model {
         $this->update('Korisnik');
     }
     
+    /**
+     * Vraća sve korisnike koji nisu administratori
+     * 
+     * @return array
+     */
     public function getUsers() {
         $res1 = $this->where('Tip', 'O')->where('Status', 'P')->findAll();
         $res2 = $this->where('Tip', 'P')->where('Status', 'P')->findAll();
@@ -40,6 +45,11 @@ class UserModel extends Model {
         return $res;
     }
     
+    /**
+     * Vraća sve korisnike koji čekaju na odobrenje zahteva za registraciju
+     * 
+     * @return array
+     */
     public function getRegistrationRequests() {
         return $this->where('Status', 'C')->findAll();
     }

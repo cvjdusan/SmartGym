@@ -6,6 +6,8 @@ use CodeIgniter\Model;
  * 
  * Model koji opisuje tip sprave
  * 
+ * @author Marko Pantić 0440/2016
+ * 
  * @version 1.0
  * 
  */

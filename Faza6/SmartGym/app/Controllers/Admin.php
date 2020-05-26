@@ -7,12 +7,21 @@ use App\Models\RequestModel;
 use App\Models\TermModel;
 
 /**
- * Description of Admin
+ * Admin - klasa koja realizuje akcije administratora
  *
- * @author Marko
+ * @author Marko Pantić 0440/2016
+ * 
+ * @version 1.0
  */
 class Admin extends Moderator{
     
+    /**
+     * Funkcija za prikaz veb stranice. Prima naziv stranice i dodatne podatke
+     * 
+     * @param string $page
+     * @param string[] $data
+     * @return void
+     */
     protected function show($page, $data) {
         $data['controller']='Admin';
         $data['page']=$page;
@@ -24,16 +33,32 @@ class Admin extends Moderator{
         echo view('templates/footer');
     } 
     
+    /**
+     * Funkcija za prikaz početne veb stranice
+     * 
+     * @return void
+     */
     public function index() {
         $this->show('admin_menu', []);
     }
     
+    /**
+     * Funkcija za prikaz stranice za blokiranje korisnika
+     * 
+     * @return void
+     */
     public function blocking() {
         $um = new UserModel();
         $users = $um->getUsers();
         $this->show('blocking_users', ['users' => $users]);
     }
     
+    /**
+     * Funkcija koja realizuje akciju admina sa stranice za blokiranje.
+     * Šalje korisnika na blockWarning stranicu ako je odabrao da se neki korisnik blokira, inače šalje korisnika na index stranicu
+     * 
+     * @return redirect
+     */
     public function block() {
         if (isset($_POST['nazad'])) {
              return redirect()->to(site_url("Admin"));
@@ -48,10 +73,21 @@ class Admin extends Moderator{
         return redirect()->to(site_url("Admin"));
     }
     
+    /**
+     * Funkcija za prikaz veb stranice upozorenja za blokiranje
+     * 
+     * @param array $user
+     * @return void
+     */
     public function blockWarning($user) {
         $this->show("blockWarning", ['user' => $user]);
     }
     
+    /**
+     * Funkcija koja realizuje blokiranje korisnika
+     * 
+     * @return redirect
+     */
     public function finalBlock() {
         if (isset($_POST['nazad'])) {
              return redirect()->to(site_url("Admin/blocking"));
@@ -67,12 +103,23 @@ class Admin extends Moderator{
         return redirect()->to(site_url("Admin/blocking"));
     }
     
+    /**
+     * Funkcija za prikaz veb stranice sa zahtevima za registraciju
+     * 
+     * @return void
+     */
     public function viewRequestRegistration() {
         $um = new UserModel();
         $requests = $um->getRegistrationRequests();
         $this->show("registration_requests", ['requests'=>$requests]);
     }
     
+    /**
+     * Funkcija koja realizuje akciju admina sa stranice za pregled zahteva za registracijom.
+     * Prihvata ili odbija korisnike koji su poslali zahtev
+     * 
+     * @return redirect
+     */
     public function registrationResponse() {
         if (isset($_POST['nazad'])) {
              return redirect()->to(site_url("Admin"));
@@ -92,7 +139,11 @@ class Admin extends Moderator{
         return redirect()->to(site_url("Admin"));
     }
     
-    
+    /**
+     * Funkcija za prikaz veb stranice sa zahtevima za premium
+     * 
+     * @return void
+     */
     public function viewRequestPremium() {
         $rm = new RequestModel();
         $requests = $rm->getPremiumRequests();
@@ -105,6 +156,12 @@ class Admin extends Moderator{
         $this->show("premium_requests", ['requests'=>$users]);
     }
     
+    /**
+     * Funkcija koja realizuje akciju admina sa stranice za pregled zahteva za premium.
+     * Prebacuje korisnike u premium ili im odbija zahtev
+     * 
+     * @return redirect
+     */
     public function premiumResponse() {
         if (isset($_POST['nazad'])) {
             return redirect()->to(site_url("Admin"));
@@ -130,10 +187,20 @@ class Admin extends Moderator{
         return redirect()->to(site_url("Admin"));
     }
     
+    /**
+     * Funkcija za prikaz početne veb stranice za pregled zakazanih termina
+     * 
+     * @return void
+     */
     public function marking() {
         $this->show("marking_header", ['date' => null]);
     }
     
+    /**
+     * Funkcija za prikaz veb stranice za pregled zakazanih termina nakod odabranog datuma
+     * 
+     * @return redirect
+     */
     public function mark() {
         if (isset($_POST['nazad'])) {
             return redirect()->to(site_url("Admin"));
@@ -154,6 +221,12 @@ class Admin extends Moderator{
         return redirect()->to(site_url("Admin"));
     }
     
+    /**
+     * Funkcija koja realizuje akciju admina sa stranice za pregled zakazanih termina.
+     * Označava termine kao realizovane ili ne, prikazuje  stranicu za pregled zakazanih termina nakod odabranog naziva korisnika
+     * 
+     * @return void
+     */
     public function markResponse() {
         $date = $this->request->getVar('date');
         $tm = new TermModel();

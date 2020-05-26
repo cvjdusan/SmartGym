@@ -7,13 +7,23 @@ namespace App\Controllers;
 use App\Models\ExerciseEquipmentTypeModel;
 use App\Models\ExerciseEquipmentModel;
 use App\Models\TargetedMuscleGroupModel;
+
 /**
- * Description of Moderator
+ * Moderator - klasa koja realizuje akcije moderatora
  *
- * @author Marko
+ * @author Marko Pantić 0440/2016
+ * 
+ * @version 1.0
  */
 class Moderator extends Premium{
     
+    /**
+     * Funkcija za prikaz veb stranice. Prima naziv stranice i dodatne podatke
+     * 
+     * @param string $page
+     * @param string[] $data
+     * @return void
+     */
     protected function show($page, $data) {
         $data['controller']='Moderator';
         $data['page']=$page;
@@ -24,28 +34,48 @@ class Moderator extends Premium{
         echo view('templates/footer');
     } 
     
+    /**
+     * Funkcija za prikaz početne veb stranice
+     * 
+     * @return void
+     */
     public function index() {
         $this->show('moderator_menu', []);
     }
     
+    /**
+     * Funkcija za prikaz veb stranice za dodavanje novog tipa sprave
+     * 
+     * @return void
+     */
     public function addingType() {
         $this->show('new_type.php', []);
     }
     
+    /**
+     * Funkcija za prikaz veb stranice za dodavanje nove sprave
+     * 
+     * @return void
+     */
     public function adding() {
         $this->show('adding_equipment.php', []);
     }
     
+    /**
+     * Funkcija za prikaz veb stranice za uklanjanje sprave
+     * 
+     * @return void
+     */
     public function removing() {
         $this->show('removing_equipment.php', []);
     }
     
-    public function showEquipment($id) {
-        $eem = new ExerciseEquipmentTypeModel();
-        $eq = $eem->find($id);
-        $this->show('equipment.php', ['eq' => $eq]);
-    }
-    
+    /**
+     * Funkcija koja realizuje akciju korisnika sa stranice za dodavanje novog tipa sprave.
+     * Dodaje novi tip sprave
+     * 
+     * @return redirect
+     */
     public function addType() {
         $path = $this->session->get('type');
          if (isset($_POST['nazad'])) {
@@ -88,6 +118,12 @@ class Moderator extends Premium{
         return redirect()->to(site_url("$path/adding"));
     }
     
+    /**
+     * Funkcija koja realizuje akciju korisnika sa stranice za dodavanje nove sprave.
+     * Dodaje novu spravu, ili prebacuje korisnika na stranicu za dodavanje novog tipa sprave
+     * 
+     * @return redirect
+     */
     public function addEquipment() {
         $path = $this->session->get('type');
         if (isset($_POST['nazad'])) {
@@ -111,6 +147,12 @@ class Moderator extends Premium{
         return redirect()->to(site_url("$path"));
     }
     
+    /**
+     * Funkcija koja realizuje akciju korisnika sa stranice za uklanjanje sprave.
+     * Uklanja spravu markiranjem u bazi
+     * 
+     * @return redirect
+     */
     public function removeEquipment() {
         $path = $this->session->get('type');
         if (isset($_POST['nazad'])) {
