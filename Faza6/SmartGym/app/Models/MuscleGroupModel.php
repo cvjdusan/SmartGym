@@ -24,6 +24,8 @@ class MuscleGroupModel extends Model{
     * Pronalazak tipova mišića
     * 
     * @param musc
+    * 
+    * @return array
     *  
     */
   
@@ -41,14 +43,17 @@ class MuscleGroupModel extends Model{
                     'GrupaMisica' => $res[$j]->Naziv,  
                     'Opis' => $musc[$i]['Opis'],
                     'Naziv' => $musc[$i]['Naziv'],
-                    'Slika' => $musc[$i]['Slika']
-                     ];
+                    'Slika' => $musc[$i]['Slika'],
+                    'Jacina' => $musc[$i]['Jacina']
+                    ];
 
                      $id = $this->alreadyIn($temp, $eq);
                      if($id != -1){
                          $eq[$id]['GrupaMisica'] .=" ".$temp['GrupaMisica'];
-                     }else
-                        array_push($eq, $temp);            
+                         $eq[$id]['Jacina'] .= " ".$temp['Jacina'];
+                     }else{
+                        array_push($eq, $temp); 
+                     }
             }
         }
         

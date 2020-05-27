@@ -24,6 +24,8 @@ class TermModel extends Model{
    * Pronalazak svih termina
    * 
    * @param Date, Time
+   * 
+   * @return array
    */
   
   public function getTerms($Date, $Time){
@@ -36,6 +38,7 @@ class TermModel extends Model{
    * Pronalazak svih termina trenutnog korisnika
    * 
    * @param Date, Time, user
+   * @return array
    * 
    */
   

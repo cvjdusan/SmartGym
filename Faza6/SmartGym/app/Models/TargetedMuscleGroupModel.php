@@ -28,6 +28,8 @@ class TargetedMuscleGroupModel extends Model{
    * 
    * @param typeEq
    * 
+   * @return array
+   * 
    */
   
   public function findTarget($typeEq){
@@ -44,7 +46,8 @@ class TargetedMuscleGroupModel extends Model{
                           'IdGru' => $res[$j]->IdGru,
                           'Opis' => $typeEq[$i]['Opis'],
                           'Naziv' => $typeEq[$i]['Naziv'],
-                          'Slika' => $typeEq[$i]['Slika']
+                          'Slika' => $typeEq[$i]['Slika'],
+                          'Jacina' => $res[$j]->Jacina
                     ];
                     
                     array_push($musc, $temp);       

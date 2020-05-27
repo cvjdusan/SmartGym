@@ -23,6 +23,8 @@ class ExerciseEquipmentTypeModel extends Model {
  * @author Dušan Cvjetičanin 170169
  * 
  * Pronalazak tipova sprava
+  * 
+  * @return array
  */     
         
     public function findTypes($activeEq){

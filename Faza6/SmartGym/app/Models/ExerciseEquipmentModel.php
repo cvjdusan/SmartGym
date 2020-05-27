@@ -23,6 +23,8 @@ class ExerciseEquipmentModel extends Model{
  * @author Dušan Cvjetičanin 170169
  * 
  * Pronalazak aktivnih sprava 
+  * 
+  * @return array
  */
   
   public function findActive(){

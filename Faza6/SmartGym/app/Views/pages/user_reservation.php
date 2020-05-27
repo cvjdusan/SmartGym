@@ -65,30 +65,30 @@ if($session->has('Datum')) {
              ?>
          </div>
         </form>
-      <form class="form" name="reservationForm1" action="<?= site_url($controller."/reservationAdd") ?>" method="post">
- <!--     <div class="row">
-            <div class="col-sm-12 offset-md-1 col-md-10 offset-md-1" id="registationDiv">
-                    <table class="table table-dark table-striped" style="margin-top: 50px;">
-                        <thead>
-                            <tr>
-                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                <td>Naziv sprave</td>
-                                <td>Grupa misica</td>
-                                <td>Opis</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                        </thead>
-                    </table>
-            </div>
-        </div> -->
-                        
+      <form class="form" name="reservationForm1" action="<?= site_url($controller."/reservationAdd") ?>" method="post">                        
         <?php
-            if(isset($eq)) {            
+            $session = session();
+            if(isset($eq)) { 
                 $string = "";
                 $row = '<div class="row reservationRow">';
-                $div = '<div class="col-3 col-sm-2 col-md-2 reservationDiv">';
-                $divF = '<div class="col-3 col-sm-2 offset-md-1 col-md-2 reservationDiv">';
+                $div = '<div class="col-2 col-sm-2 col-md-2 reservationDiv">';
+                $rowO = '<div class="row">';
+                $divF = '<div style="margin-left: 30px; margin-bottom: 5px;" class="col-2 col-sm-2 col-md-2  reservationDiv">';
                 $end = '</div>';
+                $string .= $rowO;
+                $string .= $divF;
+                $string .= '';
+                $string .= $end;
+                $string .= $div;
+                $string .= 'Naziv';
+                $string .= $end;
+                $string .= $div;
+                $string .= 'Gr. mišića - br. poena';
+                $string .= $end;
+                $string .= $div;
+                $string .= 'Opis';
+                $string .= $end;
+                $string .= $end;
                 sort($eq);
                 for($i = 0; $i < count($eq); $i++) {
                     if(!in_array($eq[$i]['IdSpr'], $reserved)){
@@ -100,7 +100,14 @@ if($session->has('Datum')) {
                         $string .= $eq[$i]['Naziv']." ".$eq[$i]['IdSpr'];
                         $string .= $end;
                         $string .= $div;
-                        $string .= $eq[$i]['GrupaMisica'];
+                        
+                        $GrupaMisica = explode(" ", $eq[$i]['GrupaMisica']);
+                        $Jacina = explode(" ", $eq[$i]['Jacina']);
+                        for($j = 0; $j < count($GrupaMisica); $j++){
+                            $string.= $GrupaMisica[$j]. " - ".$Jacina[$j]."<br/>"; 
+                        }
+                      //  $string .= $eq[$i]['GrupaMisica'];
+                        //$string .= $eq[$i]['Jacina'];
                         $string .= $end;
                         $string .= $div;
                         $string .= $eq[$i]['Opis'];

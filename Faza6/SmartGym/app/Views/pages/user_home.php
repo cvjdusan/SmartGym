@@ -1,9 +1,9 @@
 <!-- @author Dušan Cvjetičanin 170169 -->
-
+<?php $session = session() ?>
 <div class="container-fluid fill bg-success">
         <div class="row bg-success" id="content">
             <div class="offset-1 col-sm-12 col-md-5">
-                <h2 style="margin-top: 30px;">Dragi korisniče, imamo sjajan predlog za Vas!</h2>
+                <h2 style="margin-top: 30px;">Dragi <?php echo $session->get('user')->KorisnickoIme?>, imamo sjajan predlog za Vas!</h2>
                 <ul type="disc">
                     <li><h2 style="margin-top: 20px;">Postanite PREMIUM korisnik i pratite Vaš napredak!</h2>
                     <li><h2 style="margin-top: 20px;">Saznajte tačnu statistiku važih treninga!</h2>
