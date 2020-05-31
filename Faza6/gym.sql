@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: May 31, 2020 at 04:20 PM
+-- Generation Time: May 31, 2020 at 07:57 PM
 -- Server version: 8.0.18
 -- PHP Version: 7.4.0
 
@@ -73,10 +73,12 @@ CREATE TABLE IF NOT EXISTS `korisnik` (
 --
 
 INSERT INTO `korisnik` (`KorisnickoIme`, `Sifra`, `ImePrezime`, `Mejl`, `DatumRodjenja`, `Tip`, `Status`) VALUES
-('admin', '$2y$08$AvpidhJgTG1Omt.okb/vhee3Rv6BgGh1UAYWeTn8Styo01yPr8FGG', 'Admin Adminovic', 'admin@gmail.com', '2000-04-10', 'A', 'P'),
+('admin', '$2y$08$KDblXLwPGxvidmU2.gMeNuEPZevon/7xQLeYTgPu/4vw9HBXMwfMO', 'Admin Adminovic', 'admin@gmail.com', '2000-04-10', 'A', 'P'),
 ('obican', '$2y$08$3.eKNwtbrZnnwyuvJCGf9uKSihAsRrMVHh7LH1CgrBVVXiZbxD6NS', 'Obican Jedan', 'obican1@gmail.com', '1990-05-15', 'O', 'P'),
 ('premium', '$2y$08$aLD/VZGotSh2ttR6okVri.rOwkH1syXooHI5pFp/EE.2awFGLE6By', 'Premium Premovic', 'premium@gmail.com', '1951-05-23', 'P', 'P'),
-('moderator', '$2y$08$fU3JfrizXtbAzYT3MzJoCOPHSNeHqp/PZo.Yu9uYQoW.OU0jTSRYG', 'Moderator Moderatovic', 'moderator@gmail.com', '1967-12-19', 'M', 'P');
+('moderator', '$2y$08$fU3JfrizXtbAzYT3MzJoCOPHSNeHqp/PZo.Yu9uYQoW.OU0jTSRYG', 'Moderator Moderatovic', 'moderator@gmail.com', '1967-12-19', 'M', 'P'),
+('obican2', '$2y$08$WIeN2WY4YHE/Sa1gcXGDDeNIgviNHO2IEdemX1yKd1NuNFfCVoRWa', 'Obican Dva', 'obican2@gmail.com', '1960-05-10', 'P', 'P'),
+('premium2', '$2y$08$akvDYnUwLJRV0/iP823P/eR1ChebePaDIR3UgBOwOtu.pm4WJaEIe', 'Premium Dva', 'premium2@gmail.com', '1973-04-11', 'P', 'C');
 
 -- --------------------------------------------------------
 
@@ -132,7 +134,7 @@ CREATE TABLE IF NOT EXISTS `rezervacija` (
   PRIMARY KEY (`IdRez`),
   KEY `IX_Relationship3` (`IdTer`),
   KEY `IX_Relationship4` (`IdSpr`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `rezervacija`
@@ -155,7 +157,10 @@ INSERT INTO `rezervacija` (`IdRez`, `IdTer`, `IdSpr`) VALUES
 (14, 13, 1),
 (15, 14, 7),
 (16, 15, 6),
-(17, 16, 5);
+(17, 16, 5),
+(18, 17, 1),
+(19, 18, 2),
+(20, 19, 6);
 
 -- --------------------------------------------------------
 
@@ -201,7 +206,7 @@ CREATE TABLE IF NOT EXISTS `termin` (
   `KorisnickoIme` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`IdTer`),
   KEY `IX_Relationship5` (`KorisnickoIme`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `termin`
@@ -223,7 +228,10 @@ INSERT INTO `termin` (`IdTer`, `Datum`, `Vreme`, `Status`, `KorisnickoIme`) VALU
 (13, '2020-06-02', '14:20:00', 'R', 'moderator'),
 (14, '2020-06-02', '14:30:00', 'R', 'moderator'),
 (15, '2020-06-02', '14:40:00', 'R', 'moderator'),
-(16, '2020-06-02', '14:50:00', 'R', 'moderator');
+(16, '2020-06-02', '14:50:00', 'R', 'moderator'),
+(17, '2020-06-04', '07:00:00', 'D', 'admin'),
+(18, '2020-06-04', '07:10:00', 'D', 'admin'),
+(19, '2020-06-04', '07:20:00', 'R', 'admin');
 
 -- --------------------------------------------------------
 
@@ -273,7 +281,14 @@ CREATE TABLE IF NOT EXISTS `zahtev` (
   `Tip` char(1) NOT NULL,
   PRIMARY KEY (`IdZah`),
   KEY `IX_Relationship8` (`KorisnickoIme`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `zahtev`
+--
+
+INSERT INTO `zahtev` (`IdZah`, `Status`, `KorisnickoIme`, `Tip`) VALUES
+(1, 'C', 'obican2', 'P');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
