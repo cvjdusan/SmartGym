@@ -2,7 +2,7 @@
 
 <div class="container-fluid fill">
     <div class="row" id="content">
-        <div class="offset-1 col-sm-12 col-md-10">
+        <div class="offset-md-1 col-sm-12 col-md-10">
 
 <?php
 

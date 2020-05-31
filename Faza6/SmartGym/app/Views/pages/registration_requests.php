@@ -1,6 +1,6 @@
 <div class="container-fluid fill">
     <div class="row" id="content">
-        <div class="offset-1 col-sm-12 col-md-10">
+        <div class="offset-md-1 col-sm-12 col-md-10">
 
 <?php
 
@@ -10,7 +10,7 @@ echo form_open("Admin/registrationResponse","method=post");
 
 if ($requests != null) {
 
-    echo "<table class='table table-striped'>";
+    echo "<table class='table table-responsive-sm table-striped'>";
     echo "<thead class='thead-dark'>
             <tr>
                 <th scope='col'>R.Br.</th>
@@ -39,7 +39,6 @@ if ($requests != null) {
        // echo " &nbsp&nbsp ";
         echo "<td>";
         echo '<input class="btn btn-success" type="submit" name="prihvati'.$req->KorisnickoIme.'" value="Prihvati"/>';
-        echo " &nbsp";
         echo '<input class="btn btn-danger" type="submit" name="odbij'.$req->KorisnickoIme.'" value="Odbij"/>';
         echo "</td>";
         $cnt++;

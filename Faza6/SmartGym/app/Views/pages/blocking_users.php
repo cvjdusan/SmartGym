@@ -1,13 +1,13 @@
 <div class="container-fluid fill">
     <div class="row" id="content">
-        <div class="offset-1 col-sm-12 col-md-10">
+        <div class="offset-md-1 col-sm-12 col-md-10">
 
 <?php
 
 
 echo form_open("Admin/block","method=post");
 
-    echo "<table class='table table-striped'>";
+    echo "<table class='table table-responsive-sm table-striped'>";
     echo "<thead class='thead-dark'>
             <tr>
                 <th scope='col'>Korisničko Ime </th>

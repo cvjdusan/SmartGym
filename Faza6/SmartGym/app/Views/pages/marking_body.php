@@ -19,7 +19,7 @@ if ($terms != null || $text != "") {
     echo "<br><br>";
     
     if ($terms != null) {
-    echo "<table class='table table-striped'>";
+    echo "<table class='table table-responsive-sm table-striped'>";
     echo "<thead class='thead-dark'>
             <tr>
                 <th scope='col'>R.Br.</th>
