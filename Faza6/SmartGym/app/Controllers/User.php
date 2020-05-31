@@ -101,6 +101,7 @@ class User extends BaseController{
         $termsMe = $termModel->getTermsMe($Date, $Time, $this->session->get('user'));
         $reserved = [];
         $reservedByMe = [];
+
              
         if($terms != null){
             // pronalazak svih rez sprava
@@ -122,13 +123,19 @@ class User extends BaseController{
         //trazanje imena tih misica
         $eq = $muscleModel->findMuscle($targetEq);
         
-        // ako su sve sprave rezervisane
-        if( count($eq) == count($reserved)){
-            return $this->reservation("Sprave nisu dostupne u ovom terminu.", $eq, $reserved);     
-        }
-
         
-    
+        $br = 0;
+        for($i = 0; $i < count($eq); $i++) {
+            if(!in_array($eq[$i]['IdSpr'], $reserved))
+                    $br++;
+        }
+        
+        // ako nema aktivnih
+        // ili su sve aktivne sprave zauzete
+        if(count($eq) == 0 || $br == 0){
+            return $this->reservation("Sprave nisu dostupne u ovom terminu.");     
+        }
+           
         return $this->reservation("", $eq, $reserved);
    }
    
