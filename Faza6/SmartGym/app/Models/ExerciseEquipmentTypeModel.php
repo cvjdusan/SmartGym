@@ -45,5 +45,16 @@ class ExerciseEquipmentTypeModel extends Model {
 
         return $typeEq;
     }
+    
+    /**
+    *Pronalazi sve tipove sprava sa zadatim IdTip
+    *     
+    *@author Miljana Džunić 0177/2017
+    * 
+    * @return object
+    */
+    public function findByIdTip($IdTip){
+        return $this->where('IdTip', $IdTip)->first();
+    }
         
 }

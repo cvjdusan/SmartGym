@@ -7,6 +7,7 @@ use App\Models\ReservationModel;
 use App\Models\TermModel;
 use App\Models\TargetedMuscleGroupModel;
 use App\Models\UserModel;
+use App\Models\RequestModel;
 
 
 /**
@@ -189,14 +190,84 @@ class User extends BaseController{
        return redirect()->to('reservation');
    }
 
-     /*
-     * @author Dušan Cvjetičanin 170169
-     * Kraj sesije i vraćanje na početni ekran
-     * 
-     * @return void;
-     */
-   public function logout(){
+    /*
+    * @author Dušan Cvjetičanin 170169
+    * Kraj sesije i vraćanje na početni ekran
+    * 
+    * @return void;
+    */
+    public function logout(){
        $this->session->destroy();
        return redirect()->to(site_url('/'));
    }
+   
+    /*
+    * @author Miljana Džunić 0177/2017
+    * 
+    * Funkcija realizuje slanje premium zahteva za običnog korisnika i
+    * prikazuje user_home stranicu
+    * 
+    * @return redirect;
+    */
+    public function sendPremiumRequest(){
+        $path = $this->session->get('type');
+        if (isset($_POST['posaljizahtev'])) {
+            $user = $this->session->get('user');
+            if($user->Tip == 'O' && $user->Status == 'P'){
+                $reqModel = new RequestModel();
+                $reqModel->setPremiumRequest($user->KorisnickoIme);
+                return redirect()->to(site_url("$path"));
+            }
+            else{
+                echo"greska";
+            }
+        }
+        return $this->show('user_home',[]);
+    }
+    
+    /*
+    * @author Miljana Džunić 0177/2017
+    * 
+    * Funkcija za prikaz rezervacija ulogovanog korisnika,
+    * prikazuje stranicu reservation_view
+    * 
+    * @return redirect;
+    */
+    public function reservationView(){
+        $path = $this->session->get('type');
+        if (isset($_POST['nazad'])) {
+             return redirect()->to(site_url("$path"));
+         }
+        $user = $this->session->get('user');
+        
+        $resModel = new ReservationModel();
+        $ress = $resModel->getResForKorIme($user->KorisnickoIme);
+        if($ress != null){
+            
+            foreach ($ress->getResult() as $res){
+                 //$b = "otkazirez".$res->IdRez;
+                if (isset($_POST['otkazirez'.$res->IdRez])) {
+                    $rm = new ReservationModel();
+                //    $rm->delete($res->IdRez);   
+                    $rm->deleteRez($res->IdRez, $user->KorisnickoIme);
+                    return redirect()->to(site_url("$path/reservationView"));
+                }
+            }
+        }
+        
+        return $this->show('reservation_view', []);
+    }
+    
+    /*
+    * @author Miljana Džunić 0177/2017
+    * 
+    * Funkcija za prikaz sprave, prikazuje stranicu equipment.php
+    * 
+    * @return void
+    */
+    public function showEquipment($id) {
+        $eem = new ExerciseEquipmentTypeModel();
+        $eq = $eem->find($id);
+        $this->show('equipment.php', ['eq' => $eq]);
+    }
 }

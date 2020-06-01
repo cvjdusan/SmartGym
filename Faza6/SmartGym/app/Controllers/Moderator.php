@@ -122,6 +122,7 @@ class Moderator extends Premium{
      * Funkcija koja realizuje akciju korisnika sa stranice za dodavanje nove sprave.
      * Dodaje novu spravu, ili prebacuje korisnika na stranicu za dodavanje novog tipa sprave
      * 
+     * 
      * @return redirect
      */
     public function addEquipment() {
@@ -169,9 +170,26 @@ class Moderator extends Premium{
         }
         return redirect()->to(site_url("$path"));
     }
-    
-    public function statistics() {
-        echo "Za Miljanu";
+    /**
+     * Funkcija koja prikazuje statistiku sa stranice za moderator_statistics
+     *     
+     *@author Miljana Džunić 0177/2017
+     * 
+     * @return redirect
+     */
+    public function showStatistics() {
+        $path = $this->session->get('type');
+        
+        if (isset($_POST['opadajuce'])) {
+            return $this->show('moderator_statistics', ['buttonPushed'=>'PritisnutoOpadajuce']);
+        }
+        if (isset($_POST['rastuce'])) {
+            return $this->show('moderator_statistics', ['buttonPushed'=>'PritisnutoRastuce']);
+        }
+        if (isset($_POST['nazad'])) {
+             return redirect()->to(site_url("$path"));
+        }
+       $this->show('moderator_statistics', ['buttonPushed'=>null]);
     }
      
 }

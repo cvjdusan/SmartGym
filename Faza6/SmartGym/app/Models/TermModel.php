@@ -12,89 +12,116 @@ use CodeIgniter\Model;
  */
 
 class TermModel extends Model{
-  protected $table      = 'termin';
-  protected $primaryKey = 'IdTer';
-  protected $returnType = 'object';
-  protected $allowedFields = ['IdTer', 'Datum', 'Vreme', 'Status', 'KorisnickoIme'];
+    protected $table      = 'termin';
+    protected $primaryKey = 'IdTer';
+    protected $returnType = 'object';
+    protected $allowedFields = ['IdTer', 'Datum', 'Vreme', 'Status', 'KorisnickoIme'];
 
-  
-  /*
-   * @author Dušan Cvjetičanin 170169
-   * 
-   * Pronalazak svih termina
-   * 
-   * @param Date, Time
-   * 
-   * @return array
-   */
-  
-  public function getTerms($Date, $Time){
-      return $this->where(['Datum' => $Date, 'Vreme' => $Time])->findAll();
-  }
-  
-  /*
-   * Autor: Dušan Cvjetičanin 170169
-   * 
-   * Pronalazak svih termina trenutnog korisnika
-   * 
-   * @param Date, Time, user
-   * @return array
-   * 
-   */
-  
-  public function getTermsMe($Date, $Time, $user){
-      return $this->where(['Datum' => $Date, 'Vreme' => $Time, 'KorisnickoIme' =>
-          $user->KorisnickoIme])->findAll();
-  }
-  
-  /**
-   * Vraća termine određenog datuma
-   * 
-   * @param Date $date
-   * @return array
-   */
-  public function getTermsByDate($date) {
-      return $this->where('Datum', $date)->where('Status', 'R')->findAll();
-  }
-  
-  /**
-   * Vraća termine određenog korisnika
-   * 
-   * @param array $user
-   * @return array
-   */
-    public function getTermsByUser($user) {
-      return $this->where('KorisnickoIme', $user->KorisnickoIme)->where('Status', 'D')->findAll();
-  }
-  
-  /**
-   * Vraća sve realizovane termine
-   * 
-   * @return array
-   */
-  public function getAllTerms() {
-      return $this->where('Status', 'D')->findAll();
-  }
-  
-  /**
-   * Vraća termine određenog korisnika i datuma
-   * 
-   * @param string $user
-   * @param Date $date
-   * @return array
-   */
-  public function getTermsByUserAndDate($user, $date) {
-      return $this->like('KorisnickoIme', $user)->where('Datum', $date)->where('Status', 'R')->findAll();
-  }
-  
-  /**
-   * Vraća sve neobrađene termine određenog korisnika
-   * 
-   * @param string $user
-   * @return array
-   */
-  public function getUnmarkedTermsByUser($user) {
-      return $this->where('KorisnickoIme', $user)->where('Status', 'R')->findAll();
-  }
+
+    /*
+     * @author Dušan Cvjetičanin 170169
+     * 
+     * Pronalazak svih termina
+     * 
+     * @param Date, Time
+     * 
+     * @return array
+     */
+
+    public function getTerms($Date, $Time){
+        return $this->where(['Datum' => $Date, 'Vreme' => $Time])->findAll();
+    }
+
+    /*
+     * Autor: Dušan Cvjetičanin 170169
+     * 
+     * Pronalazak svih termina trenutnog korisnika
+     * 
+     * @param Date, Time, user
+     * @return array
+     * 
+     */
+
+    public function getTermsMe($Date, $Time, $user){
+        return $this->where(['Datum' => $Date, 'Vreme' => $Time, 'KorisnickoIme' =>
+            $user->KorisnickoIme])->findAll();
+    }
+
+    /**
+     * Vraća termine određenog datuma
+     * 
+     * @param Date $date
+     * @return array
+     */
+    public function getTermsByDate($date) {
+        return $this->where('Datum', $date)->where('Status', 'R')->findAll();
+    }
+
+    /**
+     * Vraća termine određenog korisnika
+     * 
+     * @param array $user
+     * @return array
+     */
+      public function getTermsByUser($user) {
+        return $this->where('KorisnickoIme', $user->KorisnickoIme)->where('Status', 'D')->findAll();
+    }
+
+    /**
+     * Vraća sve realizovane termine
+     * 
+     * @return array
+     */
+    public function getAllTerms() {
+        return $this->where('Status', 'D')->findAll();
+    }
+
+    /**
+     * Vraća termine određenog korisnika i datuma
+     * 
+     * @param string $user
+     * @param Date $date
+     * @return array
+     */
+    public function getTermsByUserAndDate($user, $date) {
+        return $this->like('KorisnickoIme', $user)->where('Datum', $date)->where('Status', 'R')->findAll();
+    }
+
+    /**
+     * Vraća sve neobrađene termine određenog korisnika
+     * 
+     * @param string $user
+     * @return array
+     */
+    public function getUnmarkedTermsByUser($user) {
+        return $this->where('KorisnickoIme', $user)->where('Status', 'R')->findAll();
+    }
+    
+    /**
+    *Dohvata sve termine korisnika dobijenog parametrom 
+    *     
+    *@author Miljana Džunić 0177/2017
+    * 
+    * @return object
+    */
+    public function getTermsByKorIme($user){
+        return $this->where('KorisnickoIme', $user)->orderBy('Datum')->findAll();
+    }
+    
+    /**
+    *Briše termin iz baze čiji je IdTer proleđen parametrom, 
+    *poziva funkciju za brisanje rezervacija za taj termiin
+    *      
+    *@author Miljana Džunić 0177/2017
+    * 
+    * @return void
+    */
+    public function deleteTerm($IdTer){
+        $resModel = new ReservationModel();
+        if($this->where('IdTer', $IdTer)->first()->Status == 'R'){
+            $resModel->deleteForTerm($IdTer, $IdSpr);
+            return $this->delete($IdTer);
+        }
+    }
         
 }

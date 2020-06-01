@@ -12,7 +12,7 @@
                 <br>
             <?= anchor("Admin/removing", "Ukloni spravu") ?> 
                 <br>
-            <?= anchor("Admin/statistics", "Statistika") ?> 
+            <?= anchor("Admin/showStatistics", "Statistika") ?> 
                 <br>
         </div>
         <div class="offset-1 col-sm-4 col-md-4" style="background-color: white">

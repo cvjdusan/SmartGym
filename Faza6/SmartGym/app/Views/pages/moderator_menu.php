@@ -20,7 +20,7 @@
                     </li>
                     <li>
                  <figure>
-                    <a class="modLink" href="<?php echo base_url()?>/Moderator/statistics"><img class="modImg" src="/images/stats.png"> </a> 
+                    <a class="modLink" href="<?php echo base_url()?>/Moderator/showStatistics"><img class="modImg" src="/images/stats.png"> </a> 
                     <figcaption><h5>&nbsp;&nbsp; Statistika sprava</h5></figcaption>
                 </figure>
                     </li>

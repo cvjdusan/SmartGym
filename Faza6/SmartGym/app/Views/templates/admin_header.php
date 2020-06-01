@@ -52,7 +52,7 @@
                  </div>
                </div> 
                 <a class="nav-item nav-link <?php if($page == 'user_reservation') echo "active";?>" href="<?php echo base_url()?>/Admin/reservation">Rezervacija</a>
-                <a class="nav-item nav-link <?php if($page == 'user_term') echo "active";?>" href="<?php echo base_url()?>/Admin/term" id="aNavRight">Pregled termina</a>
+                <a class="nav-item nav-link <?php if($page == 'reservation_view') echo "active";?>" href="<?php echo base_url()?>/Admin/reservationView" id="aNavRight">Pregled termina</a>
                 <a class="nav-item nav-link <?php if($page == 'premium_statistics') echo "active";?>" href="<?php echo base_url()?>/Admin/getStatistics">Statistika</a> 
                 <a class="nav-item nav-link" href="<?php echo base_url()?>/Admin/logout" id="aNavRight">Izloguj se</a>
             </div>

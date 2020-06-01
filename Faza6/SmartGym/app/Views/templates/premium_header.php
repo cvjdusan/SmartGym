@@ -31,7 +31,7 @@
             <div class="navbar-nav ml-auto">
                 <a class="nav-item nav-link <?php if($page == 'user_home') echo "active";?>" href="<?php echo base_url()?>/Premium/index">Početna <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link <?php if($page == 'user_reservation') echo "active";?>" href="<?php echo base_url()?>/Premium/reservation">Rezervacija</a>
-                <a class="nav-item nav-link <?php if($page == 'user_term') echo "active";?>" href="<?php echo base_url()?>/Premium/term">Pregled termina</a>
+                <a class="nav-item nav-link <?php if($page == 'reservation_view') echo "active";?>" href="<?php echo base_url()?>/Premium/reservationView">Pregled termina</a>
                 <a class="nav-item nav-link <?php if($page == 'premium_statistics') echo "active";?>" href="<?php echo base_url()?>/Premium/getStatistics">Statistika</a>             
                 <a class="nav-item nav-link" href="<?php echo base_url()?>/Premium/logout" id="aNavRight">Izloguj se</a>
             </div>
