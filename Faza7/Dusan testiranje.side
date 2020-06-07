@@ -62,7 +62,7 @@
     }, {
       "id": "ce4b1752-5c02-41d8-92a1-7d107e46279e",
       "comment": "",
-      "command": "verifyText",
+      "command": "assertText",
       "target": "css=form",
       "targets": [
         ["css=form", "css:finder"],
@@ -131,7 +131,7 @@
     }, {
       "id": "75c9c38f-3044-47b9-b537-1a197b507718",
       "comment": "",
-      "command": "verifyText",
+      "command": "assertText",
       "target": "css=form",
       "targets": [
         ["css=form", "css:finder"],
@@ -297,7 +297,7 @@
     }, {
       "id": "c9b2cdc9-e92b-47d7-b3c4-f32af6dd17da",
       "comment": "",
-      "command": "verifyText",
+      "command": "assertText",
       "target": "css=#errorMsg > font",
       "targets": [
         ["css=#errorMsg > font", "css:finder"],
@@ -442,7 +442,7 @@
     }, {
       "id": "0b47bcdb-1324-4fd7-9d88-5ca4dd8d61b7",
       "comment": "",
-      "command": "verifyText",
+      "command": "assertText",
       "target": "css=.table tr:nth-child(2) > td:nth-child(3)",
       "targets": [
         ["css=.table tr:nth-child(2) > td:nth-child(3)", "css:finder"],
@@ -511,7 +511,7 @@
     }, {
       "id": "0eaa0635-d836-4651-938e-fefb58c3cabc",
       "comment": "",
-      "command": "verifyText",
+      "command": "assertText",
       "target": "css=.table tr:nth-child(2) > td:nth-child(2)",
       "targets": [
         ["css=.table tr:nth-child(2) > td:nth-child(2)", "css:finder"],
@@ -654,7 +654,7 @@
     }, {
       "id": "098ba657-750b-4a4b-9172-2f303db3c7f4",
       "comment": "",
-      "command": "verifyText",
+      "command": "assertText",
       "target": "css=.row:nth-child(2) > .col-2:nth-child(2)",
       "targets": [
         ["css=.row:nth-child(2) > .col-2:nth-child(2)", "css:finder"],
@@ -1002,7 +1002,7 @@
     }, {
       "id": "1e48d0e4-8cb3-4492-88bc-f0f7f20c4280",
       "comment": "",
-      "command": "verifyText",
+      "command": "assertText",
       "target": "css=li",
       "targets": [
         ["css=li", "css:finder"],
@@ -1168,7 +1168,7 @@
     }, {
       "id": "365c86d3-0b5b-4071-95da-61190947f9e4",
       "comment": "",
-      "command": "verifyText",
+      "command": "assertText",
       "target": "css=.offset-1 > span",
       "targets": [
         ["css=.offset-1 > span", "css:finder"],
