@@ -77,8 +77,10 @@ INSERT INTO `korisnik` (`KorisnickoIme`, `Sifra`, `ImePrezime`, `Mejl`, `DatumRo
 ('obican', '$2y$08$3.eKNwtbrZnnwyuvJCGf9uKSihAsRrMVHh7LH1CgrBVVXiZbxD6NS', 'Obican Jedan', 'obican1@gmail.com', '1990-05-15', 'O', 'P'),
 ('premium', '$2y$08$aLD/VZGotSh2ttR6okVri.rOwkH1syXooHI5pFp/EE.2awFGLE6By', 'Premium Premovic', 'premium@gmail.com', '1951-05-23', 'P', 'P'),
 ('moderator', '$2y$08$fU3JfrizXtbAzYT3MzJoCOPHSNeHqp/PZo.Yu9uYQoW.OU0jTSRYG', 'Moderator Moderatovic', 'moderator@gmail.com', '1967-12-19', 'M', 'P'),
-('obican2', '$2y$08$WIeN2WY4YHE/Sa1gcXGDDeNIgviNHO2IEdemX1yKd1NuNFfCVoRWa', 'Obican Dva', 'obican2@gmail.com', '1960-05-10', 'P', 'P'),
-('premium2', '$2y$08$akvDYnUwLJRV0/iP823P/eR1ChebePaDIR3UgBOwOtu.pm4WJaEIe', 'Premium Dva', 'premium2@gmail.com', '1973-04-11', 'P', 'C');
+('obican2', '$2y$08$WIeN2WY4YHE/Sa1gcXGDDeNIgviNHO2IEdemX1yKd1NuNFfCVoRWa', 'Obican Dva', 'obican2@gmail.com', '1960-05-10', 'O', 'P'),
+('premium2', '$2y$08$akvDYnUwLJRV0/iP823P/eR1ChebePaDIR3UgBOwOtu.pm4WJaEIe', 'Premium Dva', 'premium2@gmail.com', '1973-04-11', 'P', 'C'),
+('obican3', '$2y$08$1kL9XfZZAPeaC4uR3UsSzuP4EtKUW1EpLoxZXDeGN78a1uF5ue6HO', 'Obican Tri', 'obican3@gmail.com', '1999-06-16', 'O', 'C'),
+('obican4', '$2y$08$8zb4zao8UuodibNw14hxGu/DH4ShNzT3EUo9bXX3A3J4ejoehzetS', 'Obican Cetiri', 'obican4@gmail.com', '1985-06-04', 'O', 'P');
 
 -- --------------------------------------------------------
 
@@ -288,7 +290,8 @@ CREATE TABLE IF NOT EXISTS `zahtev` (
 --
 
 INSERT INTO `zahtev` (`IdZah`, `Status`, `KorisnickoIme`, `Tip`) VALUES
-(1, 'C', 'obican2', 'P');
+(1, 'C', 'obican2', 'P'),
+(2, 'C', 'obican4', 'P');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
