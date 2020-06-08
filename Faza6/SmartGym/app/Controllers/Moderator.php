@@ -97,6 +97,15 @@ class Moderator extends Premium{
         }
         $ImageData = file_get_contents($_FILES['img']['tmp_name']);
         $eetm = new ExerciseEquipmentTypeModel();
+        $flag = false;
+        for ($i = 1; $i <= 6; $i++) {
+            $type = $this->request->getVar('muscle_type'.$i);
+            if ($type > 0) {
+                $flag = true;
+                break;
+            }
+        }
+        if ($flag == false) { return $this->show('new_type.php', ['errors'=>"Niste dodali nijednu grupu mišića"]); }
         $eetm->save([
             'Naziv'=>$this->request->getVar('naziv'),
             'Opis'=>$this->request->getVar('opis'),

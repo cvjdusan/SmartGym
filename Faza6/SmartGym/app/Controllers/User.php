@@ -218,11 +218,8 @@ class User extends BaseController{
                 $reqModel->setPremiumRequest($user->KorisnickoIme);
                 return redirect()->to(site_url("$path"));
             }
-            else{
-                echo"greska";
-            }
         }
-        return $this->show('user_home',[]);
+        return redirect()->to(site_url("$path"));
     }
     
     /*
