@@ -1,0 +1,259 @@
+{
+  "id": "ef6f3f65-bf92-4f33-bfce-eb30b51fc03d",
+  "version": "2.0",
+  "name": "Marko testiranje",
+  "url": "http://localhost:8080",
+  "tests": [{
+    "id": "f0e522b3-dbf0-42ba-8141-f92cd871809b",
+    "name": "LK Pregled Termina",
+    "commands": [{
+      "id": "5341fe5e-147a-4911-8d86-ffb04345d81a",
+      "comment": "",
+      "command": "open",
+      "target": "/User/index",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d6f2be8e-7018-41fc-ba31-bb9b8c07dec0",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1536x718",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "917755fd-f2a4-4dff-9979-c9f189892c14",
+      "comment": "",
+      "command": "click",
+      "target": "id=aNavRight",
+      "targets": [
+        ["id=aNavRight", "id"],
+        ["linkText=Pregled termina", "linkText"],
+        ["xpath=//a[contains(text(),'Pregled termina')]", "xpath:link"],
+        ["xpath=//a[@id='aNavRight']", "xpath:attributes"],
+        ["xpath=//div[@id='navbarNavAltMarkup']/div/a[3]", "xpath:idRelative"],
+        ["xpath=//a[@href='http://localhost:8080/User/reservationView']", "xpath:href"],
+        ["xpath=//a[3]", "xpath:position"],
+        ["xpath=//a[contains(.,'Pregled termina')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "877dda8a-6886-4cd7-86d4-82a2d8bbf328",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=form",
+      "targets": [
+        ["css=form", "css:finder"],
+        ["xpath=//form[@action='http://localhost:8080/User/reservationView']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/div/form", "xpath:idRelative"],
+        ["xpath=//form", "xpath:position"]
+      ],
+      "value": "Datum Vreme Sprava Tip sprave    \\n2020-06-01 07:00:00 1 Benc\\n2020-06-01 07:10:00 2 Chest press\\n2020-06-01 07:20:00 3 Leg press\\n2020-06-01 07:30:00 4 Bucice\\n2020-06-02 07:30:00 1 Benc\\n2020-06-02 07:40:00 7 ButterFly"
+    }, {
+      "id": "a0c407b5-1e01-435b-9763-ad010e6b553b",
+      "comment": "",
+      "command": "click",
+      "target": "name=nazad",
+      "targets": [
+        ["name=nazad", "name"],
+        ["css=input", "css:finder"],
+        ["xpath=//input[@name='nazad']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5df46489-2e0a-4631-97c3-cdad9d480a4f",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.col-sm-12",
+      "targets": [
+        ["css=.col-sm-12", "css:finder"],
+        ["xpath=//div[@id='content']/div", "xpath:idRelative"],
+        ["xpath=//div/div/div", "xpath:position"]
+      ],
+      "value": "Dobrodošli, obican\\nUspešno ste poslali PREMIUM zahtev!\\nVaš zahtev je u obradi!"
+    }]
+  }, {
+    "id": "4216c69f-1b2a-4bd2-a723-9a706916b2e7",
+    "name": "LK Zahtev za Premium",
+    "commands": [{
+      "id": "caf8e494-5dfa-47bc-88b4-b6b62e4042ed",
+      "comment": "",
+      "command": "open",
+      "target": "/User",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "daec1bda-2234-49de-a6c5-6ccecea24c0f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1536x718",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "74ddf481-47cf-4337-a07f-16cb0c70c6ba",
+      "comment": "",
+      "command": "click",
+      "target": "name=posaljizahtev",
+      "targets": [
+        ["name=posaljizahtev", "name"],
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@name='posaljizahtev']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "27981530-46c7-4baa-9485-5239c2fb6324",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.col-sm-12",
+      "targets": [
+        ["css=.col-sm-12", "css:finder"],
+        ["xpath=//div[@id='content']/div", "xpath:idRelative"],
+        ["xpath=//div/div/div", "xpath:position"]
+      ],
+      "value": "Dobrodošli, obican2\\nUspešno ste poslali PREMIUM zahtev!\\nVaš zahtev je u obradi!"
+    }]
+  }, {
+    "id": "fa9be087-db2e-4553-b73e-78e81863a68d",
+    "name": "LK Pregled Statistike",
+    "commands": [{
+      "id": "5de1ccd7-a2e0-44ca-b64e-df13f9ab047d",
+      "comment": "",
+      "command": "open",
+      "target": "/Moderator",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0be67fcf-3adf-4d92-a670-785e9d142b3d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1536x718",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e5357af5-f772-49b5-adeb-ff6efed4122b",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(3) .modImg",
+      "targets": [
+        ["css=li:nth-child(3) .modImg", "css:finder"],
+        ["xpath=//div[@id='content']/div/ul/li[3]/figure/a/img", "xpath:idRelative"],
+        ["xpath=//li[3]/figure/a/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4593951e-13ba-44d7-8cd5-333477f2e1ff",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=content",
+      "targets": [
+        ["id=content", "id"],
+        ["css=#content", "css:finder"],
+        ["xpath=//div[@id='content']", "xpath:attributes"],
+        ["xpath=//body/div/div", "xpath:position"]
+      ],
+      "value": "Sortiraj :\\n  Sprava Tip sprave Br. rezervacija\\n1 Benc 5\\n2 Chest press 3\\n3 Leg press 1\\n4 Bucice 2\\n5 Bucice 3\\n6 Klupa za trbusnjake 3\\n7 ButterFly 4\\n8 Lat sprava 2\\n9 Benc 0\\n10 Benc 0\\n11 Benc 0\\n12 Benc 0\\n13 Bucice 0\\n14 Benc 0"
+    }, {
+      "id": "0be34633-3631-4348-b836-1e055a42fd5f",
+      "comment": "",
+      "command": "click",
+      "target": "name=opadajuce",
+      "targets": [
+        ["name=opadajuce", "name"],
+        ["css=.btn:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='opadajuce']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/div/form/table/tbody/tr/td[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b46ed213-f350-4041-9167-89ba317f4e73",
+      "comment": "",
+      "command": "click",
+      "target": "name=rastuce",
+      "targets": [
+        ["name=rastuce", "name"],
+        ["css=.btn:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='rastuce']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/div/form/table/tbody/tr/td[2]/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3b22ae73-d06b-4b5e-96f6-d7e71f4c3ac9",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=content",
+      "targets": [
+        ["id=content", "id"],
+        ["css=#content", "css:finder"],
+        ["xpath=//div[@id='content']", "xpath:attributes"],
+        ["xpath=//body/div/div", "xpath:position"]
+      ],
+      "value": "Sortiraj :\\n  Sprava Tip sprave Br. rezervacija\\n3 Leg press 1\\n8 Lat sprava 2\\n4 Bucice 2\\n5 Bucice 3\\n6 Klupa za trbusnjake 3\\n2 Chest press 3\\n7 ButterFly 4\\n1 Benc 5"
+    }, {
+      "id": "944b19a3-3ae5-4983-81cf-d23ec1f9f7c3",
+      "comment": "",
+      "command": "click",
+      "target": "name=opadajuce",
+      "targets": [
+        ["name=opadajuce", "name"],
+        ["css=.btn:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='opadajuce']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/div/form/table/tbody/tr/td[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9211d7fb-a790-4463-a6ec-c2d5f172b241",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=content",
+      "targets": [
+        ["id=content", "id"],
+        ["css=#content", "css:finder"],
+        ["xpath=//div[@id='content']", "xpath:attributes"],
+        ["xpath=//body/div/div", "xpath:position"]
+      ],
+      "value": "Sortiraj :\\n  Sprava Tip sprave Br. rezervacija\\n1 Benc 5\\n7 ButterFly 4\\n5 Bucice 3\\n6 Klupa za trbusnjake 3\\n2 Chest press 3\\n8 Lat sprava 2\\n4 Bucice 2\\n3 Leg press 1"
+    }, {
+      "id": "12fc84d6-04ff-412c-bad7-4f4cfacc4b64",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Benc",
+      "targets": [
+        ["linkText=Benc", "linkText"],
+        ["css=tr:nth-child(1) a", "css:finder"],
+        ["xpath=//a[contains(text(),'Benc')]", "xpath:link"],
+        ["xpath=//div[@id='content']/div/form/table[2]/tbody/tr/td[2]/a", "xpath:idRelative"],
+        ["xpath=//a[@href='http://localhost:8080/Moderator/showEquipment/1']", "xpath:href"],
+        ["xpath=//td[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Benc')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "da41330b-3aee-49dd-b51a-37e134a06f6a",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.offset-1",
+      "targets": [
+        ["css=.offset-1", "css:finder"],
+        ["xpath=//div[@id='content']/div", "xpath:idRelative"],
+        ["xpath=//body/div/div/div", "xpath:position"]
+      ],
+      "value": "Benc\\nGrupe mišića / Jačina:\\n\\nGrudi / 10\\nBiceps / 5\\n\\nNajbolja sprava za grudi!"
+    }]
+  }],
+  "suites": [{
+    "id": "5ae1c41c-94e8-4d07-8e8b-fd22a92f0fde",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["f0e522b3-dbf0-42ba-8141-f92cd871809b"]
+  }],
+  "urls": ["http://localhost:8080/"],
+  "plugins": []
+}
