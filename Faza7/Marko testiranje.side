@@ -7,21 +7,21 @@
     "id": "f0e522b3-dbf0-42ba-8141-f92cd871809b",
     "name": "LK Pregled Termina",
     "commands": [{
-      "id": "5341fe5e-147a-4911-8d86-ffb04345d81a",
+      "id": "65bb23e7-0f6b-4610-b441-f512da964726",
       "comment": "",
       "command": "open",
-      "target": "/User/index",
+      "target": "/User",
       "targets": [],
       "value": ""
     }, {
-      "id": "d6f2be8e-7018-41fc-ba31-bb9b8c07dec0",
+      "id": "a4c1d199-53cd-4ece-871f-ebf6fba06ec0",
       "comment": "",
       "command": "setWindowSize",
       "target": "1536x718",
       "targets": [],
       "value": ""
     }, {
-      "id": "917755fd-f2a4-4dff-9979-c9f189892c14",
+      "id": "54bdf081-a192-4b03-a507-eda8f3b1fa2a",
       "comment": "",
       "command": "click",
       "target": "id=aNavRight",
@@ -37,7 +37,7 @@
       ],
       "value": ""
     }, {
-      "id": "877dda8a-6886-4cd7-86d4-82a2d8bbf328",
+      "id": "a26fbe93-07ef-4b18-8c78-87e1d824dc94",
       "comment": "",
       "command": "assertText",
       "target": "css=form",
@@ -47,22 +47,47 @@
         ["xpath=//div[@id='content']/div/form", "xpath:idRelative"],
         ["xpath=//form", "xpath:position"]
       ],
-      "value": "Datum Vreme Sprava Tip sprave    \\n2020-06-01 07:00:00 1 Benc\\n2020-06-01 07:10:00 2 Chest press\\n2020-06-01 07:20:00 3 Leg press\\n2020-06-01 07:30:00 4 Bucice\\n2020-06-02 07:30:00 1 Benc\\n2020-06-02 07:40:00 7 ButterFly"
+      "value": "Datum Vreme Sprava Tip sprave    \\n2020-06-01 07:00:00 1 Benc\\n2020-06-01 07:10:00 2 Chest press\\n2020-06-01 07:20:00 3 Leg press\\n2020-06-01 07:30:00 4 Bucice\\n2020-08-02 07:30:00 1 Benc\\n2020-08-02 07:30:00 6 Klupa za trbusnjake\\n2020-08-02 07:40:00 7 ButterFly"
     }, {
-      "id": "a0c407b5-1e01-435b-9763-ad010e6b553b",
+      "id": "3b35aa5a-e2f9-4320-8f19-4d8b72506ade",
+      "comment": "",
+      "command": "click",
+      "target": "name=otkazirez7",
+      "targets": [
+        ["name=otkazirez7", "name"],
+        ["css=tr:nth-child(7) .btn", "css:finder"],
+        ["xpath=//input[@name='otkazirez7']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/div/form/table/tbody/tr[7]/td[5]/input", "xpath:idRelative"],
+        ["xpath=//tr[7]/td[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5356e7f6-0449-4af9-b438-e1440e5d75d9",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=form",
+      "targets": [
+        ["css=form", "css:finder"],
+        ["xpath=//form[@action='http://localhost:8080/User/reservationView']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/div/form", "xpath:idRelative"],
+        ["xpath=//form", "xpath:position"]
+      ],
+      "value": "Datum Vreme Sprava Tip sprave    \\n2020-06-01 07:00:00 1 Benc\\n2020-06-01 07:10:00 2 Chest press\\n2020-06-01 07:20:00 3 Leg press\\n2020-06-01 07:30:00 4 Bucice\\n2020-08-02 07:30:00 1 Benc\\n2020-08-02 07:30:00 6 Klupa za trbusnjake"
+    }, {
+      "id": "6d4d8cbf-bad4-47cb-8ccc-f3720d333eef",
       "comment": "",
       "command": "click",
       "target": "name=nazad",
       "targets": [
         ["name=nazad", "name"],
-        ["css=input", "css:finder"],
+        ["css=input:nth-child(3)", "css:finder"],
         ["xpath=//input[@name='nazad']", "xpath:attributes"],
         ["xpath=//div[@id='content']/div/form/input", "xpath:idRelative"],
-        ["xpath=//input", "xpath:position"]
+        ["xpath=//form/input", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "5df46489-2e0a-4631-97c3-cdad9d480a4f",
+      "id": "80ea34cd-441e-4605-bc57-4f3d0caac2be",
       "comment": "",
       "command": "assertText",
       "target": "css=.col-sm-12",
@@ -71,27 +96,27 @@
         ["xpath=//div[@id='content']/div", "xpath:idRelative"],
         ["xpath=//div/div/div", "xpath:position"]
       ],
-      "value": "Dobrodošli, obican\\nUspešno ste poslali PREMIUM zahtev!\\nVaš zahtev je u obradi!"
+      "value": "Dobrodošli, obican\\nDragi obican, imamo sjajan predlog za Vas!\\nPostanite PREMIUM korisnik i pratite Vaš napredak!\\nSaznajte tačnu statistiku važih treninga!\\nDobijate i savete sistema kako da unapredite Vaš trening!\\nSta čekate? Postanite PREMIUM već danas !"
     }]
   }, {
     "id": "4216c69f-1b2a-4bd2-a723-9a706916b2e7",
     "name": "LK Zahtev za Premium",
     "commands": [{
-      "id": "caf8e494-5dfa-47bc-88b4-b6b62e4042ed",
+      "id": "f7819738-babb-4f85-bdc5-95ed12058c12",
       "comment": "",
       "command": "open",
       "target": "/User",
       "targets": [],
       "value": ""
     }, {
-      "id": "daec1bda-2234-49de-a6c5-6ccecea24c0f",
+      "id": "ebc89e3b-5a6b-4a3b-b4cf-ae6a2359597f",
       "comment": "",
       "command": "setWindowSize",
       "target": "1536x718",
       "targets": [],
       "value": ""
     }, {
-      "id": "74ddf481-47cf-4337-a07f-16cb0c70c6ba",
+      "id": "43151a23-8dd3-4016-8a5a-cab2bac663e1",
       "comment": "",
       "command": "click",
       "target": "name=posaljizahtev",
@@ -104,7 +129,7 @@
       ],
       "value": ""
     }, {
-      "id": "27981530-46c7-4baa-9485-5239c2fb6324",
+      "id": "c6218da4-809c-4099-974a-4038e014388f",
       "comment": "",
       "command": "assertText",
       "target": "css=.col-sm-12",
@@ -113,27 +138,27 @@
         ["xpath=//div[@id='content']/div", "xpath:idRelative"],
         ["xpath=//div/div/div", "xpath:position"]
       ],
-      "value": "Dobrodošli, obican2\\nUspešno ste poslali PREMIUM zahtev!\\nVaš zahtev je u obradi!"
+      "value": "Dobrodošli, obican\\nUspešno ste poslali PREMIUM zahtev!\\nVaš zahtev je u obradi!"
     }]
   }, {
     "id": "fa9be087-db2e-4553-b73e-78e81863a68d",
     "name": "LK Pregled Statistike",
     "commands": [{
-      "id": "5de1ccd7-a2e0-44ca-b64e-df13f9ab047d",
+      "id": "42bc7779-4b80-4c98-acf5-73a8a6bdf555",
       "comment": "",
       "command": "open",
       "target": "/Moderator",
       "targets": [],
       "value": ""
     }, {
-      "id": "0be67fcf-3adf-4d92-a670-785e9d142b3d",
+      "id": "b1f853a9-351d-474a-9f8d-cb71715aaea9",
       "comment": "",
       "command": "setWindowSize",
       "target": "1536x718",
       "targets": [],
       "value": ""
     }, {
-      "id": "e5357af5-f772-49b5-adeb-ff6efed4122b",
+      "id": "2bfafc17-5ebb-491d-ad01-aa08624570d4",
       "comment": "",
       "command": "click",
       "target": "css=li:nth-child(3) .modImg",
@@ -144,7 +169,7 @@
       ],
       "value": ""
     }, {
-      "id": "4593951e-13ba-44d7-8cd5-333477f2e1ff",
+      "id": "eab91dec-67c1-4eda-93de-58d297bd9b9f",
       "comment": "",
       "command": "assertText",
       "target": "id=content",
@@ -154,22 +179,9 @@
         ["xpath=//div[@id='content']", "xpath:attributes"],
         ["xpath=//body/div/div", "xpath:position"]
       ],
-      "value": "Sortiraj :\\n  Sprava Tip sprave Br. rezervacija\\n1 Benc 5\\n2 Chest press 3\\n3 Leg press 1\\n4 Bucice 2\\n5 Bucice 3\\n6 Klupa za trbusnjake 3\\n7 ButterFly 4\\n8 Lat sprava 2\\n9 Benc 0\\n10 Benc 0\\n11 Benc 0\\n12 Benc 0\\n13 Bucice 0\\n14 Benc 0"
+      "value": "Sortiraj :\\n  Sprava Tip sprave Br. rezervacija\\n1 Benc 5\\n2 Chest press 3\\n3 Leg press 1\\n4 Bucice 1\\n5 Bucice 2\\n6 Klupa za trbusnjake 4\\n7 ButterFly 3\\n8 Lat sprava 1"
     }, {
-      "id": "0be34633-3631-4348-b836-1e055a42fd5f",
-      "comment": "",
-      "command": "click",
-      "target": "name=opadajuce",
-      "targets": [
-        ["name=opadajuce", "name"],
-        ["css=.btn:nth-child(1)", "css:finder"],
-        ["xpath=//input[@name='opadajuce']", "xpath:attributes"],
-        ["xpath=//div[@id='content']/div/form/table/tbody/tr/td[2]/input", "xpath:idRelative"],
-        ["xpath=//input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "b46ed213-f350-4041-9167-89ba317f4e73",
+      "id": "340e7f31-5265-4d00-88c4-dbc49ee6aa05",
       "comment": "",
       "command": "click",
       "target": "name=rastuce",
@@ -182,7 +194,7 @@
       ],
       "value": ""
     }, {
-      "id": "3b22ae73-d06b-4b5e-96f6-d7e71f4c3ac9",
+      "id": "576f17b0-fa4f-40fe-af15-23c0b1fe9e33",
       "comment": "",
       "command": "assertText",
       "target": "id=content",
@@ -192,9 +204,9 @@
         ["xpath=//div[@id='content']", "xpath:attributes"],
         ["xpath=//body/div/div", "xpath:position"]
       ],
-      "value": "Sortiraj :\\n  Sprava Tip sprave Br. rezervacija\\n3 Leg press 1\\n8 Lat sprava 2\\n4 Bucice 2\\n5 Bucice 3\\n6 Klupa za trbusnjake 3\\n2 Chest press 3\\n7 ButterFly 4\\n1 Benc 5"
+      "value": "Sortiraj :\\n  Sprava Tip sprave Br. rezervacija\\n3 Leg press 1\\n8 Lat sprava 1\\n4 Bucice 1\\n5 Bucice 2\\n7 ButterFly 3\\n2 Chest press 3\\n6 Klupa za trbusnjake 4\\n1 Benc 5"
     }, {
-      "id": "944b19a3-3ae5-4983-81cf-d23ec1f9f7c3",
+      "id": "c5bbe6ea-0401-4195-b613-69a00f96c7db",
       "comment": "",
       "command": "click",
       "target": "name=opadajuce",
@@ -207,7 +219,7 @@
       ],
       "value": ""
     }, {
-      "id": "9211d7fb-a790-4463-a6ec-c2d5f172b241",
+      "id": "e066cd2a-61d6-40de-b6c2-689fe91beace",
       "comment": "",
       "command": "assertText",
       "target": "id=content",
@@ -217,24 +229,24 @@
         ["xpath=//div[@id='content']", "xpath:attributes"],
         ["xpath=//body/div/div", "xpath:position"]
       ],
-      "value": "Sortiraj :\\n  Sprava Tip sprave Br. rezervacija\\n1 Benc 5\\n7 ButterFly 4\\n5 Bucice 3\\n6 Klupa za trbusnjake 3\\n2 Chest press 3\\n8 Lat sprava 2\\n4 Bucice 2\\n3 Leg press 1"
+      "value": "Sortiraj :\\n  Sprava Tip sprave Br. rezervacija\\n1 Benc 5\\n6 Klupa za trbusnjake 4\\n7 ButterFly 3\\n2 Chest press 3\\n5 Bucice 2\\n3 Leg press 1\\n8 Lat sprava 1\\n4 Bucice 1"
     }, {
-      "id": "12fc84d6-04ff-412c-bad7-4f4cfacc4b64",
+      "id": "cf0e7859-2de8-49f4-a315-b4724762f816",
       "comment": "",
       "command": "click",
-      "target": "linkText=Benc",
+      "target": "linkText=Lat sprava",
       "targets": [
-        ["linkText=Benc", "linkText"],
-        ["css=tr:nth-child(1) a", "css:finder"],
-        ["xpath=//a[contains(text(),'Benc')]", "xpath:link"],
-        ["xpath=//div[@id='content']/div/form/table[2]/tbody/tr/td[2]/a", "xpath:idRelative"],
-        ["xpath=//a[@href='http://localhost:8080/Moderator/showEquipment/1']", "xpath:href"],
-        ["xpath=//td[2]/a", "xpath:position"],
-        ["xpath=//a[contains(.,'Benc')]", "xpath:innerText"]
+        ["linkText=Lat sprava", "linkText"],
+        ["css=tr:nth-child(7) a", "css:finder"],
+        ["xpath=//a[contains(text(),'Lat sprava')]", "xpath:link"],
+        ["xpath=//div[@id='content']/div/form/table[2]/tbody/tr[7]/td[2]/a", "xpath:idRelative"],
+        ["xpath=//a[@href='http://localhost:8080/Moderator/showEquipment/5']", "xpath:href"],
+        ["xpath=//tr[7]/td[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Lat sprava')]", "xpath:innerText"]
       ],
       "value": ""
     }, {
-      "id": "da41330b-3aee-49dd-b51a-37e134a06f6a",
+      "id": "06de47e1-fbce-4723-a5cb-66c0903a63f6",
       "comment": "",
       "command": "assertText",
       "target": "css=.offset-1",
@@ -243,7 +255,7 @@
         ["xpath=//div[@id='content']/div", "xpath:idRelative"],
         ["xpath=//body/div/div/div", "xpath:position"]
       ],
-      "value": "Benc\\nGrupe mišića / Jačina:\\n\\nGrudi / 10\\nBiceps / 5\\n\\nNajbolja sprava za grudi!"
+      "value": "Lat sprava\\nGrupe mišića / Jačina:\\n\\nLedja / 10\\nTriceps / 7\\n\\nSprava koja savršeno pogadja mišiće ledja."
     }]
   }],
   "suites": [{
