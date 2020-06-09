@@ -3942,6 +3942,7 @@
 </XPD:OBJ>
 <XPD:OBJ name="ParticipatingStimuli[19]" type="UMLStimulus" guid="rwzw12CVgEiCPZmcce0lEgAA">
 <XPD:ATTR name="Name" type="string">sendData</XPD:ATTR>
+<XPD:ATTR name="Arguments" type="string">IdSpr</XPD:ATTR>
 <XPD:REF name="Sender">k+8KN41TMEq8snXTkNXW0wAA</XPD:REF>
 <XPD:REF name="Receiver">OmZEb9VH2kKp91FdWY6g2wAA</XPD:REF>
 <XPD:OBJ name="Action" type="UMLCallAction" guid="dbKCUT6lWUi2mhiZr24i6AAA">
